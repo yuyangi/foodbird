@@ -1,4 +1,4 @@
-package com.sub.biz.gen;
+package com.sub.common.gen;
 
 public class BizGenerator {
 

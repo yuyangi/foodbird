@@ -1,4 +1,4 @@
-package com.sub.biz.gen.model;
+package com.sub.common.gen.model;
 
 public interface IAttribute extends ICodeModel {
 

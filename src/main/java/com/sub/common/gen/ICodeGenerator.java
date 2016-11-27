@@ -1,6 +1,6 @@
-package com.sub.biz.gen;
+package com.sub.common.gen;
 
-import com.sub.biz.gen.template.ICodeTemplate;
+import com.sub.common.gen.template.ICodeTemplate;
 
 public interface ICodeGenerator {
 
