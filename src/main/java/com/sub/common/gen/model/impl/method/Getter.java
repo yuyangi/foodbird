@@ -45,10 +45,10 @@ public class Getter extends BaseCodeModel implements IMethod, IConstants {
     @Override
     public String toCode() {
         new Segment(
-                new Line().append(visibility().name()).wordSeparator().append(returnType().code()).wordSeparator().
-                        append(getter()).leftBracket().append(attribute.type().code()).leftBrace(),
-                new Line(INDENT).append(visibility().name()).wordSeparator().append(returnType().code()),
-                new Line().append(visibility().name()).wordSeparator().append(returnType().code())
+                new Line().append(visibility()).append(returnType().code()).
+                        append(getter()).bracket("").leftBrace().swapLine(),
+                new Line(INDENT)._return().append(attribute.code()).stateEnd().swapLine(),
+                new Line().rightBrace()
         );
         return null;
     }

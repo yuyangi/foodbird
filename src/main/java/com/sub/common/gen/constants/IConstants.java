@@ -19,4 +19,6 @@ public interface IConstants {
 
     static final String INDENT = "    ";
 
+    static final String DOT = ".";
+
 }

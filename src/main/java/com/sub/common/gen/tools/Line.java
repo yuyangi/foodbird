@@ -23,7 +23,17 @@ public class Line implements IConstants {
 
     public Line append(String line) {
         if(line != null){
+            if(!line.isEmpty()) {
+                this.line.append(WORD_SEPARATOR);
+            }
             this.line.append(line);
+        }
+        return this;
+    }
+
+    public Line append(Object line) {
+        if(line != null){
+            this.append(line.toString());
         }
         return this;
     }
@@ -35,7 +45,7 @@ public class Line implements IConstants {
         return this;
     }
 
-    public Line wordSeparator() {
+    public Line separator() {
         line.append(WORD_SEPARATOR);
         return this;
     }
@@ -70,7 +80,7 @@ public class Line implements IConstants {
         return this;
     }
 
-    public Line end() {
+    public Line _return() {
         line.append(RETURN);
         return this;
     }
@@ -91,7 +101,7 @@ public class Line implements IConstants {
     }
 
     public Line brace(String segment) {
-        this.leftBrace().swapLine().append(segment.toString()).swapLine().rightBrace();
+        this.leftBrace().swapLine().append(segment).swapLine().rightBrace();
         return this;
     }
 
@@ -101,7 +111,22 @@ public class Line implements IConstants {
     }
 
     public Line bracket(String segment) {
-        this.leftBracket().append(segment.toString()).rightBracket();
+        this.leftBracket().append(segment).rightBracket();
+        return this;
+    }
+
+    public Line _this() {
+        line.append("this");
+        return this;
+    }
+
+    public Line dot() {
+        line.append(DOT);
+        return this;
+    }
+
+    public Line assign() {
+        line.append(WORD_SEPARATOR).append("=").append(WORD_SEPARATOR);
         return this;
     }
 
