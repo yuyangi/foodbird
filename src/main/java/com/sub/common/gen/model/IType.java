@@ -6,4 +6,6 @@ public interface IType extends ICodeModel {
 
     Type type();
 
+    IClass classType();
+
 }

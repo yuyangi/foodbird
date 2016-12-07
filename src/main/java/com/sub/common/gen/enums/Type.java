@@ -14,8 +14,12 @@ public enum Type {
     DOUBLE,
     BOOLEAN,
     CLASS,
-    INTERFACE,
+    LIST,
+    MAP,
     ARRAY,
-    NULL;
+    NULL,
+    VOID;
+
+    public static Type[] Basics = new Type[] {BYTE, SHORT,INT,LONG,CHAR,FLOAT,DOUBLE,BOOLEAN};
 
 }

@@ -21,4 +21,5 @@ public interface IConstants {
 
     static final String DOT = ".";
 
+    static final String COMMA = ",";
 }
