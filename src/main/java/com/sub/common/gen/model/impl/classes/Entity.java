@@ -14,6 +14,8 @@ public class Entity extends BaseCodeModel implements IClass {
 	
 	private List<IMethod> methods;
 
+	private List<IClass> generics;
+
 	public List<IAttribute> getAttributes() {
 		return attributes;
 	}
@@ -52,5 +54,10 @@ public class Entity extends BaseCodeModel implements IClass {
 	public String toCode() {
 
 		return null;
+	}
+
+	@Override
+	public List<IClass> generics() {
+		return generics;
 	}
 }

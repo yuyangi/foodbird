@@ -3,6 +3,18 @@
     <groupId>CodeGen</groupId>
     <artifactId>com.yy.CodeGen</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <properties>
         <!-- spring版本号 -->
         <spring.version>4.0.2.RELEASE</spring.version>

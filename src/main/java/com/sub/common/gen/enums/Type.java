@@ -21,5 +21,6 @@ public enum Type {
     VOID;
 
     public static Type[] Basics = new Type[] {BYTE, SHORT,INT,LONG,CHAR,FLOAT,DOUBLE,BOOLEAN};
+    public static Type[] Objects = new Type[] {CLASS,LIST,MAP,ARRAY};
 
 }

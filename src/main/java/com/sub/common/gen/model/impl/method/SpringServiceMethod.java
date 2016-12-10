@@ -8,6 +8,7 @@ import com.sub.common.gen.model.IParameter;
 import com.sub.common.gen.model.IType;
 import com.sub.common.gen.model.impl.BaseCodeModel;
 import com.sub.common.gen.tools.CollectionUtils;
+import com.sub.common.gen.tools.Segment;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -39,12 +40,21 @@ public abstract class SpringServiceMethod extends BaseCodeModel implements IMeth
     @Override
     public String toCode() {
         StringBuilder codeBuilder = new StringBuilder();
-        codeBuilder.append("public List<ProjectDto> query(ProjectCondition condition)"+getThrows()+" {").append(LINE_SEPARATOR);
+        codeBuilder.append("public " + getReturn() + " "+ code() + "(ProjectCondition condition)" + getThrows() + " {").append(LINE_SEPARATOR);
         codeBuilder.append("    List<Project> projects = objectBo.query(condition);").append(LINE_SEPARATOR);
         codeBuilder.append("    List<ProjectDto> projectDtos = ProjectConverter.convertList(projects)").append(LINE_SEPARATOR);
         codeBuilder.append("    return projectDtos;").append(LINE_SEPARATOR);
         codeBuilder.append("}").append(LINE_SEPARATOR);
         return codeBuilder.toString();
+    }
+
+    public abstract Segment methodBody();
+
+    private String getParameters() {
+        if(parameters != null) {
+
+        }
+        return "";
     }
 
     private String getThrows() {
@@ -60,8 +70,9 @@ public abstract class SpringServiceMethod extends BaseCodeModel implements IMeth
                 return "void";
             } else if(Arrays.asList(Type.Basics).contains(returnType.type())) {
                 return returnType.type().name().toLowerCase();
+            } else if(Arrays.asList(Type.Objects).contains(returnType.type())) {
+                return returnType.classType() != null ? returnType.classType().code() : returnType.code();
             }
-
         }
         return "void";
     }
