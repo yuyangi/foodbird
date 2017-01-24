@@ -1,6 +1,7 @@
 package com.sub.common.gen.model.impl;
 
 import com.sub.common.gen.enums.Modifier;
+import com.sub.common.gen.model.IClass;
 import com.sub.common.gen.model.ICodeModel;
 import com.sub.common.gen.model.IPackage;
 
@@ -13,6 +14,7 @@ public abstract class BaseCodeModel implements ICodeModel {
 	private String module;
 	private Modifier visibility;
 	private Modifier modifier;
+	private IClass parent;
 	
 	public Modifier getVisibility() {
 		return visibility;
@@ -92,6 +94,10 @@ public abstract class BaseCodeModel implements ICodeModel {
 
 	public Modifier modifier() {
 		return modifier;
+	}
+
+	public IClass parent() {
+		return parent;
 	}
 
 }

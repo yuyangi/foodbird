@@ -2,20 +2,23 @@ package com.sub.common.gen.model.impl.method;
 
 import com.sub.common.gen.constants.IConstants;
 import com.sub.common.gen.enums.Modifier;
-import com.sub.common.gen.model.IAttribute;
-import com.sub.common.gen.model.IMethod;
-import com.sub.common.gen.model.IParameter;
-import com.sub.common.gen.model.IType;
+import com.sub.common.gen.model.*;
 import com.sub.common.gen.model.impl.BaseCodeModel;
 import com.sub.common.gen.tools.Line;
 import com.sub.common.gen.tools.Segment;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by yuyang on 2016/11/27.
  */
+@Component("getter")
 public class Getter extends BaseCodeModel implements IMethod, IConstants {
 
     private IAttribute attribute;
+
+    public Getter() {
+
+    }
 
     public Getter(IAttribute attribute) {
         super();
@@ -56,4 +59,5 @@ public class Getter extends BaseCodeModel implements IMethod, IConstants {
     private String getter() {
         return "get" + attribute.code().substring(0, 1).toUpperCase() + attribute.code().substring(1);
     }
+
 }

@@ -4,4 +4,6 @@ public interface IAttribute extends ICodeModel {
 
 	IType type();
 
+	IClass parent();
+
 }

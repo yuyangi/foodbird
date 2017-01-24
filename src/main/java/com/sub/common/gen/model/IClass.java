@@ -14,4 +14,6 @@ public interface IClass extends ICodeModel {
 
 	List<IClass> generics();
 
+	IClass parent();
+
 }

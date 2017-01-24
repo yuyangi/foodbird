@@ -6,4 +6,6 @@ public interface IMethod extends ICodeModel {
 
     IType returnType();
 
+    IClass parent();
+
 }

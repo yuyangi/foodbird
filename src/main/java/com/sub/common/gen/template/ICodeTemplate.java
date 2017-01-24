@@ -13,8 +13,6 @@ public interface ICodeTemplate extends ICodeModel, ICoder {
 
 	String level();
 
-	IClass entitiy();
-
-	List<IMethod> methods();
+	List<IClass> classes();
 
 }

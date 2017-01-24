@@ -9,6 +9,7 @@ import com.sub.common.gen.model.IType;
 import com.sub.common.gen.model.impl.BaseCodeModel;
 import com.sub.common.gen.tools.CollectionUtils;
 import com.sub.common.gen.tools.Segment;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -47,8 +48,6 @@ public abstract class SpringServiceMethod extends BaseCodeModel implements IMeth
         codeBuilder.append("}").append(LINE_SEPARATOR);
         return codeBuilder.toString();
     }
-
-    public abstract Segment methodBody();
 
     private String getParameters() {
         if(parameters != null) {

@@ -51,13 +51,14 @@ public class Entity extends BaseCodeModel implements IClass {
 		return methods;
 	}
 
-	public String toCode() {
-
-		return null;
-	}
 
 	@Override
 	public List<IClass> generics() {
 		return generics;
+	}
+
+	@Override
+	public String toCode() {
+		return null;
 	}
 }

@@ -9,10 +9,12 @@ import com.sub.common.gen.model.IType;
 import com.sub.common.gen.model.impl.BaseCodeModel;
 import com.sub.common.gen.tools.Line;
 import com.sub.common.gen.tools.Segment;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by yuyang on 2016/11/27.
  */
+@Component("setter")
 public class Setter extends BaseCodeModel implements IMethod, IConstants {
 
     private IAttribute attribute;
@@ -44,7 +46,7 @@ public class Setter extends BaseCodeModel implements IMethod, IConstants {
                         append(setter()).bracket(returnType().code() + " " + attribute.code()).leftBrace().swapLine(),
                 new Line(INDENT)._this().dot().append(attribute.code()).assign().append(attribute.code()).stateEnd().swapLine(),
                 new Line().rightBrace()
-        );
+        ).toString();
         return null;
     }
 

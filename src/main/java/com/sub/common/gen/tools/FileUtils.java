@@ -7,7 +7,7 @@ import java.io.*;
  */
 public class FileUtils {
 
-    public void writeFile(String path, StringBuffer content) {
+    public static void writeFile(String path, StringBuffer content) {
         try {
             File file = new File(path);
             if(!file.exists()) {
@@ -22,7 +22,7 @@ public class FileUtils {
         }
     }
 
-    public void writeFile(String path, String content) {
+    public static void writeFile(String path, String content) {
         try {
             File file = new File(path);
             if(!file.exists()) {
@@ -37,7 +37,7 @@ public class FileUtils {
         }
     }
 
-    public void writeFile(String path, byte[] content) {
+    public static void writeFile(String path, byte[] content) {
         try {
             File file = new File(path);
             if(!file.exists()) {
@@ -55,7 +55,7 @@ public class FileUtils {
         }
     }
 
-    public void createFolder(String path) {
+    public static void createFolder(String path) {
         File myFolderPath = new File(path);
         try {
             if (!myFolderPath.exists()) {
@@ -68,7 +68,7 @@ public class FileUtils {
         }
     }
 
-    public void createFile(String path) {
+    public static void createFile(String path) {
         File myFilePath = new File(path);
         try {
             if (!myFilePath.exists()) {
