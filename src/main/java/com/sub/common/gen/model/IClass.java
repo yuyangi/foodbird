@@ -6,14 +6,14 @@ import java.util.List;
 
 public interface IClass extends ICodeModel {
 
-	List<IAttribute> attributes();
+	List<IAttribute> getAttributes();
 
-	List<IMethod> methods();
+	List<IMethod> getMethods();
 
-	IPackage packages();
+	IPackage getPackages();
 
-	List<IClass> generics();
+	List<IClass> getGenerics();
 
-	IClass parent();
+	IClass getParent();
 
 }

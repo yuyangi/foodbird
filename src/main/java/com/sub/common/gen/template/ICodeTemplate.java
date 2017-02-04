@@ -7,12 +7,16 @@ import com.sub.common.gen.model.ICoder;
 import com.sub.common.gen.model.IMethod;
 import com.sub.common.gen.model.ICodeModel;
 
-public interface ICodeTemplate extends ICodeModel, ICoder {
+public interface ICodeTemplate extends ICoder {
 
-	String language();
+	String getLanguage();
 
-	String level();
+	String getModule();
 
-	List<IClass> classes();
+    String getLevel();
+
+	List<ICoder> getCoders();
+
+	void generate();
 
 }

@@ -15,39 +15,8 @@ public abstract class BaseCodeModel implements ICodeModel {
 	private Modifier visibility;
 	private Modifier modifier;
 	private IClass parent;
-	
-	public Modifier getVisibility() {
-		return visibility;
-	}
 
-	public void setVisibility(Modifier visibility) {
-		this.visibility = visibility;
-	}
-
-	public Modifier getModifier() {
-		return modifier;
-	}
-
-	public void setModifier(Modifier modifier) {
-		this.modifier = modifier;
-	}
-
-	public String name() {
-		return name;
-	}
-
-	public IPackage packages() {
-		return packages;
-	}
-
-	public String level() {
-		return level;
-	}
-
-	public String module() {
-		return module;
-	}
-
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -56,15 +25,16 @@ public abstract class BaseCodeModel implements ICodeModel {
 		this.name = name;
 	}
 
-    public String code() {
-        return code;
-    }
+	@Override
+	public String getCode() {
+		return code;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    public IPackage getPackages() {
+	public IPackage getPackages() {
 		return packages;
 	}
 
@@ -72,6 +42,7 @@ public abstract class BaseCodeModel implements ICodeModel {
 		this.packages = packages;
 	}
 
+	@Override
 	public String getLevel() {
 		return level;
 	}
@@ -80,6 +51,7 @@ public abstract class BaseCodeModel implements ICodeModel {
 		this.level = level;
 	}
 
+	@Override
 	public String getModule() {
 		return module;
 	}
@@ -88,16 +60,30 @@ public abstract class BaseCodeModel implements ICodeModel {
 		this.module = module;
 	}
 
-	public Modifier visibility() {
+	@Override
+	public Modifier getVisibility() {
 		return visibility;
 	}
 
-	public Modifier modifier() {
+	public void setVisibility(Modifier visibility) {
+		this.visibility = visibility;
+	}
+
+	@Override
+	public Modifier getModifier() {
 		return modifier;
 	}
 
-	public IClass parent() {
+	public void setModifier(Modifier modifier) {
+		this.modifier = modifier;
+	}
+
+	public IClass getParent() {
 		return parent;
 	}
 
+	public void setParent(IClass parent) {
+		this.parent = parent;
+	}
+	
 }

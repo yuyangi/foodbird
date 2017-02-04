@@ -4,16 +4,16 @@ import com.sub.common.gen.enums.Modifier;
 
 public interface ICodeModel extends ICoder {
 
-	String name();
+	String getName();
 
-	String code();
+	String getCode();
 
-	String level();
+	String getLevel();
 
-	String module();
+	String getModule();
 	
-	Modifier visibility();
+	Modifier getVisibility();
 
-	Modifier modifier();
+	Modifier getModifier();
 	
 }

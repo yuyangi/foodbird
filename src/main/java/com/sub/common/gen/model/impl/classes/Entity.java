@@ -43,18 +43,13 @@ public class Entity extends BaseCodeModel implements IClass {
 		this.methods = methods;
 	}
 
-	public List<IAttribute> attributes() {
-		return attributes;
-	}
-
-	public List<IMethod> methods() {
-		return methods;
-	}
-
-
 	@Override
-	public List<IClass> generics() {
+	public List<IClass> getGenerics() {
 		return generics;
+	}
+
+	public void setGenerics(List<IClass> generics) {
+		this.generics = generics;
 	}
 
 	@Override

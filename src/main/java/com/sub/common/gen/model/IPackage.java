@@ -7,6 +7,6 @@ import java.util.List;
  */
 public interface IPackage {
 
-    List<String> packages();
+    List<String> getPackages();
 
 }

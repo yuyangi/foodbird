@@ -20,38 +20,38 @@ public class Setter extends BaseCodeModel implements IMethod, IConstants {
     private IAttribute attribute;
 
     @Override
-    public IParameter[] parameters() {
+    public IParameter[] getParameters() {
         return new IParameter[0];
     }
 
     @Override
-    public IType returnType() {
-        return attribute.type();
+    public IType getReturnType() {
+        return attribute.getType();
     }
 
     @Override
-    public Modifier visibility() {
+    public Modifier getVisibility() {
         return Modifier.PUBLIC;
     }
 
     @Override
-    public Modifier modifier() {
+    public Modifier getModifier() {
         return null;
     }
 
     @Override
     public String toCode() {
         new Segment(
-                new Line().append(visibility()).append(returnType().code()).
-                        append(setter()).bracket(returnType().code() + " " + attribute.code()).leftBrace().swapLine(),
-                new Line(INDENT)._this().dot().append(attribute.code()).assign().append(attribute.code()).stateEnd().swapLine(),
+                new Line().append(getVisibility()).append(getReturnType().getCode()).
+                        append(setter()).bracket(getReturnType().getCode() + " " + attribute.getCode()).leftBrace().swapLine(),
+                new Line(INDENT)._this().dot().append(attribute.getCode()).assign().append(attribute.getCode()).stateEnd().swapLine(),
                 new Line().rightBrace()
         ).toString();
         return null;
     }
 
     private String setter() {
-        return "set" + attribute.code().substring(0, 1).toUpperCase() + attribute.code().substring(1);
+        return "set" + attribute.getCode().substring(0, 1).toUpperCase() + attribute.getCode().substring(1);
     }
 
 }

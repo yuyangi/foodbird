@@ -4,8 +4,8 @@ import com.sub.common.gen.enums.Type;
 
 public interface IType extends ICodeModel {
 
-    Type type();
+    Type getType();
 
-    IClass classType();
+    IClass getClassType();
 
 }

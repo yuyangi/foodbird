@@ -2,10 +2,10 @@ package com.sub.common.gen.model;
 
 public interface IMethod extends ICodeModel {
 
-    IParameter[] parameters();
+    IParameter[] getParameters();
 
-    IType returnType();
+    IType getReturnType();
 
-    IClass parent();
+    IClass getParent();
 
 }

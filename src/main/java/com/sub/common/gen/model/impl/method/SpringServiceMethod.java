@@ -29,19 +29,19 @@ public abstract class SpringServiceMethod extends BaseCodeModel implements IMeth
     private List<IClass> _throws;
 
     @Override
-    public IParameter[] parameters() {
+    public IParameter[] getParameters() {
         return parameters.toArray(new IParameter[0]);
     }
 
     @Override
-    public IType returnType() {
+    public IType getReturnType() {
         return returnType;
     }
 
     @Override
     public String toCode() {
         StringBuilder codeBuilder = new StringBuilder();
-        codeBuilder.append("public " + getReturn() + " "+ code() + "(ProjectCondition condition)" + getThrows() + " {").append(LINE_SEPARATOR);
+        codeBuilder.append("public " + getReturn() + " "+ getCode() + "(ProjectCondition condition)" + getThrows() + " {").append(LINE_SEPARATOR);
         codeBuilder.append("    List<Project> projects = objectBo.query(condition);").append(LINE_SEPARATOR);
         codeBuilder.append("    List<ProjectDto> projectDtos = ProjectConverter.convertList(projects)").append(LINE_SEPARATOR);
         codeBuilder.append("    return projectDtos;").append(LINE_SEPARATOR);
@@ -49,28 +49,21 @@ public abstract class SpringServiceMethod extends BaseCodeModel implements IMeth
         return codeBuilder.toString();
     }
 
-    private String getParameters() {
-        if(parameters != null) {
-
-        }
-        return "";
-    }
-
     private String getThrows() {
         if(_throws != null) {
-            return " throw " + String.join(COMMA,CollectionUtils.convert(_throws, t -> t.code()));
+            return " throw " + String.join(COMMA,CollectionUtils.convert(_throws, t -> t.getCode()));
         }
         return "";
     }
 
     private String getReturn() {
         if(returnType != null) {
-            if(returnType.type() == Type.VOID) {
+            if(returnType.getType() == Type.VOID) {
                 return "void";
-            } else if(Arrays.asList(Type.Basics).contains(returnType.type())) {
-                return returnType.type().name().toLowerCase();
-            } else if(Arrays.asList(Type.Objects).contains(returnType.type())) {
-                return returnType.classType() != null ? returnType.classType().code() : returnType.code();
+            } else if(Arrays.asList(Type.Basics).contains(returnType.getType())) {
+                return returnType.getType().name().toLowerCase();
+            } else if(Arrays.asList(Type.Objects).contains(returnType.getType())) {
+                return returnType.getClassType() != null ? returnType.getClassType().getCode() : returnType.getCode();
             }
         }
         return "void";

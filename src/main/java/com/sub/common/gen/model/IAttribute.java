@@ -2,8 +2,8 @@ package com.sub.common.gen.model;
 
 public interface IAttribute extends ICodeModel {
 
-	IType type();
+	IType getType();
 
-	IClass parent();
+	IClass getParent();
 
 }
