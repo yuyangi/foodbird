@@ -1,10 +1,10 @@
 package com.sub.common.gen.meta;
 
-import com.sub.common.gen.enums.Type;
+import com.sub.common.gen.enums.DataType;
 
-public interface IType extends ICodeModel {
+public interface IType {
 
-    Type getType();
+    DataType getType();
 
     IClass getClassType();
 

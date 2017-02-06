@@ -1,6 +1,6 @@
 package com.sub.common.gen.meta.method;
 
-import com.sub.common.gen.constants.IConstants;
+import com.sub.common.gen.constants.Constants;
 import com.sub.common.gen.enums.Modifier;
 import com.sub.common.gen.meta.*;
 import com.sub.common.gen.meta.BaseCodeModel;
@@ -8,11 +8,13 @@ import com.sub.common.gen.tools.Line;
 import com.sub.common.gen.tools.Segment;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by yuyang on 2016/11/27.
  */
 @Component("getter")
-public class Getter extends BaseCodeModel implements IMethod, IConstants {
+public class Getter extends BaseCodeModel implements IMethod, Constants {
 
     private IAttribute attribute;
 
@@ -47,17 +49,20 @@ public class Getter extends BaseCodeModel implements IMethod, IConstants {
 
     @Override
     public String toCode() {
-        new Segment(
-                new Line().append(getVisibility()).append(getReturnType().getCode()).
+        return new Segment(INDENT,
+                new Line().append(getVisibility()).append(getReturnType().getClassType().getCode()).
                         append(getter()).bracket("").leftBrace().swapLine(),
                 new Line(INDENT)._return().append(attribute.getCode()).stateEnd().swapLine(),
                 new Line().rightBrace()
-        );
-        return null;
+        ).toString();
     }
 
     private String getter() {
         return "get" + attribute.getCode().substring(0, 1).toUpperCase() + attribute.getCode().substring(1);
     }
 
+    @Override
+    public List<IClass> getImports() {
+        return null;
+    }
 }

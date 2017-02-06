@@ -1,4 +1,4 @@
-package com.sub.common.gen.meta;
+package com.sub.common.gen;
 
 /**
  * Created by yuyang on 2016/11/26.

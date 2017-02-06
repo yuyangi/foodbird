@@ -1,5 +1,6 @@
 package com.sub.common.gen.meta;
 
+import com.sub.common.gen.ICoder;
 import com.sub.common.gen.enums.Modifier;
 
 public interface ICodeModel extends ICoder {

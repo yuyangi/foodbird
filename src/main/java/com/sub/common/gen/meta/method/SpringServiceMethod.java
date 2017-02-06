@@ -1,7 +1,7 @@
 package com.sub.common.gen.meta.method;
 
-import com.sub.common.gen.constants.IConstants;
-import com.sub.common.gen.enums.Type;
+import com.sub.common.gen.constants.Constants;
+import com.sub.common.gen.enums.DataType;
 import com.sub.common.gen.meta.IClass;
 import com.sub.common.gen.meta.IMethod;
 import com.sub.common.gen.meta.IParameter;
@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by yy111026 on 2016/12/7.
  */
-public abstract class SpringServiceMethod extends BaseCodeModel implements IMethod, IConstants {
+public abstract class SpringServiceMethod extends BaseCodeModel implements IMethod, Constants {
 
     private IClass parent;
 
@@ -55,15 +55,19 @@ public abstract class SpringServiceMethod extends BaseCodeModel implements IMeth
 
     private String getReturn() {
         if(returnType != null) {
-            if(returnType.getType() == Type.VOID) {
+            if(returnType.getType() == DataType.VOID) {
                 return "void";
-            } else if(Arrays.asList(Type.Basics).contains(returnType.getType())) {
+            } else if(Arrays.asList(DataType.Basics).contains(returnType.getType())) {
                 return returnType.getType().name().toLowerCase();
-            } else if(Arrays.asList(Type.Objects).contains(returnType.getType())) {
-                return returnType.getClassType() != null ? returnType.getClassType().getCode() : returnType.getCode();
+            } else if(Arrays.asList(DataType.Objects).contains(returnType.getType())) {
+                return returnType.getClassType() != null ? returnType.getClassType().getCode() : returnType.getClassType().getCode();
             }
         }
         return "void";
     }
 
+    @Override
+    public List<IClass> getImports() {
+        return null;
+    }
 }

@@ -1,8 +1,8 @@
 package com.sub.common.gen.constants;
 
-public interface IConstants {
+public interface Constants {
 
-    static final String LINE_SEPARATOR = System.getProperty("line.separator", "\n");
+    static final String LINE_SEPARATOR = System.getProperty("line.separator", "\n\r");
     static final String WORD_SEPARATOR = " ";
 
     static final String LEFT_BRACE = "{";

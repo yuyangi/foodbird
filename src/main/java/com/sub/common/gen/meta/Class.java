@@ -1,28 +1,29 @@
-package com.sub.common.gen.meta.classes;
+package com.sub.common.gen.meta;
 
 import com.sub.common.gen.constants.Constants;
-import com.sub.common.gen.meta.BaseCodeModel;
-import com.sub.common.gen.meta.IAttribute;
-import com.sub.common.gen.meta.IClass;
-import com.sub.common.gen.meta.IMethod;
 import com.sub.common.gen.meta.method.Getter;
 import com.sub.common.gen.meta.method.Setter;
 import com.sub.common.gen.tools.CodeBuilder;
-import com.sub.common.gen.tools.NameUtils;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class Entity extends BaseCodeModel implements IClass {
+/**
+ * Created by yy111026 on 2017/2/6.
+ */
+public class Class extends BaseCodeModel implements IClass {
 
     private List<IAttribute> attributes;
 
     private List<IMethod> methods;
 
+    private IPackage packages;
+
     private List<IClass> generics;
 
+    private IClass parent;
+
+    @Override
     public List<IAttribute> getAttributes() {
         return attributes;
     }
@@ -31,6 +32,7 @@ public class Entity extends BaseCodeModel implements IClass {
         this.attributes = attributes;
     }
 
+    @Override
     public List<IMethod> getMethods() {
         if (methods == null) {
             methods = new ArrayList<>();
@@ -47,6 +49,16 @@ public class Entity extends BaseCodeModel implements IClass {
     }
 
     @Override
+    public IPackage getPackages() {
+        return packages;
+    }
+
+    @Override
+    public void setPackages(IPackage packages) {
+        this.packages = packages;
+    }
+
+    @Override
     public List<IClass> getGenerics() {
         return generics;
     }
@@ -56,20 +68,31 @@ public class Entity extends BaseCodeModel implements IClass {
     }
 
     @Override
+    public IClass getParent() {
+        return parent;
+    }
+
+    @Override
+    public void setParent(IClass parent) {
+        this.parent = parent;
+    }
+
+    @Override
     public String toCode() {
         CodeBuilder codes = new CodeBuilder();
         // package line
         codes.packages(String.join(".", getPackages().getPackages())).end();
         codes.append(Constants.LINE_SEPARATOR);
         // imports
-        Set<String> imports = new HashSet<String>();
+        codes.imports("java.util.*").end();
+
         boolean hasAttribute = attributes != null;
+
         if (hasAttribute) {
             hasAttribute = true;
             attributes.stream().filter(attr -> attr.getType().getClassType() != null).forEach(
-                    attr -> imports.add(attr.getType().getClassType().getPackages().toString() + "." + attr.getType().getClassType().getCode()));
+                    attr -> codes.imports(attr.getType().getClassType().getPackages() + "." + attr.getType().getClassType().getCode()));
         }
-        imports.forEach(imp -> codes.imports(imp).end().newLine());
         // class body
         codes.append(Constants.LINE_SEPARATOR);
         // attributes

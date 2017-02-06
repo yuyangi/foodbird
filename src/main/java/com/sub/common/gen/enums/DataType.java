@@ -3,7 +3,7 @@ package com.sub.common.gen.enums;
 /**
  * Created by yuyang on 2016/11/26.
  */
-public enum Type {
+public enum DataType {
 
     BYTE,
     SHORT,
@@ -20,7 +20,7 @@ public enum Type {
     NULL,
     VOID;
 
-    public static Type[] Basics = new Type[] {BYTE, SHORT,INT,LONG,CHAR,FLOAT,DOUBLE,BOOLEAN};
-    public static Type[] Objects = new Type[] {CLASS,LIST,MAP,ARRAY};
+    public static DataType[] Basics = new DataType[] {BYTE, SHORT,INT,LONG,CHAR,FLOAT,DOUBLE,BOOLEAN};
+    public static DataType[] Objects = new DataType[] {CLASS,LIST,MAP,ARRAY};
 
 }

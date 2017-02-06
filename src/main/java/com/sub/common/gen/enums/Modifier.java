@@ -13,4 +13,8 @@ public enum Modifier {
 	PUBLIC,
 	ABSTRACT;
 
+	public String toString() {
+		return name().toLowerCase();
+	}
+
 }

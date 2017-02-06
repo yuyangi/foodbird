@@ -1,12 +1,12 @@
 package com.sub.common.gen.tools;
 
-import com.sub.common.gen.constants.IConstants;
-import com.sub.common.gen.meta.ICoder;
+import com.sub.common.gen.constants.Constants;
+import com.sub.common.gen.ICoder;
 
 /**
  * Created by yuyang on 2016/11/27.
  */
-public class Line implements IConstants {
+public class Line implements Constants {
 
     private StringBuilder line = new StringBuilder();
 
@@ -139,7 +139,7 @@ public class Line implements IConstants {
     }
 
     public String toString() {
-        return indent.toString() + line.append(LINE_SEPARATOR).toString();
+        return (indent !=null ? indent.toString() : "") + line.append(LINE_SEPARATOR).toString();
     }
 
 }
