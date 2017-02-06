@@ -1,6 +1,4 @@
-package com.sub.common.gen.model;
-
-import com.sub.common.gen.enums.Type;
+package com.sub.common.gen.meta;
 
 import java.util.List;
 

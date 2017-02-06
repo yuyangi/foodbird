@@ -1,9 +1,6 @@
-package com.sub.common.gen.model.impl;
+package com.sub.common.gen.meta;
 
 import com.sub.common.gen.enums.Modifier;
-import com.sub.common.gen.model.IClass;
-import com.sub.common.gen.model.ICodeModel;
-import com.sub.common.gen.model.IPackage;
 
 public abstract class BaseCodeModel implements ICodeModel {
 

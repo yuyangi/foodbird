@@ -1,7 +1,7 @@
 package com.sub.common.gen.tools;
 
 import com.sub.common.gen.constants.IConstants;
-import com.sub.common.gen.model.ICoder;
+import com.sub.common.gen.meta.ICoder;
 
 /**
  * Created by yuyang on 2016/11/27.

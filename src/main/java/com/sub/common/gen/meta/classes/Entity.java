@@ -1,12 +1,12 @@
-package com.sub.common.gen.model.impl.classes;
+package com.sub.common.gen.meta.classes;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sub.common.gen.model.IAttribute;
-import com.sub.common.gen.model.IClass;
-import com.sub.common.gen.model.IMethod;
-import com.sub.common.gen.model.impl.BaseCodeModel;
+import com.sub.common.gen.meta.IAttribute;
+import com.sub.common.gen.meta.IClass;
+import com.sub.common.gen.meta.IMethod;
+import com.sub.common.gen.meta.BaseCodeModel;
 
 public class Entity extends BaseCodeModel implements IClass {
 

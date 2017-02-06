@@ -1,6 +1,6 @@
 package com.sub.common.gen.packages;
 
-import com.sub.common.gen.model.ICoder;
+import com.sub.common.gen.meta.ICoder;
 
 import java.util.List;
 

@@ -1,18 +1,15 @@
-package com.sub.common.gen.model.impl.method;
+package com.sub.common.gen.meta.method;
 
 import com.sub.common.gen.constants.IConstants;
 import com.sub.common.gen.enums.Type;
-import com.sub.common.gen.model.IClass;
-import com.sub.common.gen.model.IMethod;
-import com.sub.common.gen.model.IParameter;
-import com.sub.common.gen.model.IType;
-import com.sub.common.gen.model.impl.BaseCodeModel;
+import com.sub.common.gen.meta.IClass;
+import com.sub.common.gen.meta.IMethod;
+import com.sub.common.gen.meta.IParameter;
+import com.sub.common.gen.meta.IType;
+import com.sub.common.gen.meta.BaseCodeModel;
 import com.sub.common.gen.tools.CollectionUtils;
-import com.sub.common.gen.tools.Segment;
-import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**

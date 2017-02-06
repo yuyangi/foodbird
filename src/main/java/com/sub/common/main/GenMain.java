@@ -1,6 +1,6 @@
 package com.sub.common.main;
 
-import com.sub.common.gen.model.IMethod;
+import com.sub.common.gen.meta.IMethod;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

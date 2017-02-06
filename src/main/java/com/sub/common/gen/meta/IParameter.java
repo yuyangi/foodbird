@@ -1,4 +1,4 @@
-package com.sub.common.gen.model;
+package com.sub.common.gen.meta;
 
 public interface IParameter extends ICodeModel {
 
