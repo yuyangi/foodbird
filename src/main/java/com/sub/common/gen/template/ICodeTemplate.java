@@ -11,12 +11,4 @@ public interface ICodeTemplate extends ICoder {
 
 	String getLanguage();
 
-	String getModule();
-
-    String getLevel();
-
-	List<ICoder> getCoders();
-
-	void generate();
-
 }

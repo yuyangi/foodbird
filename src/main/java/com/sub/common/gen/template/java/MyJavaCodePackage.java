@@ -2,6 +2,7 @@ package com.sub.common.gen.template.java;
 
 import com.sub.common.gen.model.IClass;
 import com.sub.common.gen.model.ICoder;
+import com.sub.common.gen.packages.ICodePackage;
 import com.sub.common.gen.template.ICodeTemplate;
 
 import java.util.List;
@@ -9,11 +10,11 @@ import java.util.List;
 /**
  * Created by yy111026 on 2017/2/4.
  */
-public class MyJavaCodeTemplate implements ICodeTemplate {
+public class MyJavaCodePackage implements ICodePackage {
 
-    private static MyJavaCodeTemplate ourInstance = new MyJavaCodeTemplate();
+    private static MyJavaCodePackage ourInstance = new MyJavaCodePackage();
 
-    public static MyJavaCodeTemplate getInstance() {
+    public static MyJavaCodePackage getInstance() {
         return ourInstance;
     }
 
@@ -25,12 +26,7 @@ public class MyJavaCodeTemplate implements ICodeTemplate {
 
     private List<ICoder> codes;
 
-    private MyJavaCodeTemplate() {
-    }
-
-    @Override
-    public String getLanguage() {
-        return "Java";
+    private MyJavaCodePackage() {
     }
 
     @Override
