@@ -9,6 +9,10 @@ public class CodeBuilder {
 
     private StringBuilder codeBuilder = new StringBuilder();
 
+    public CodeBuilder() {
+
+    }
+
     public CodeBuilder end() {
         codeBuilder.append(Constants.SENTENCE_END);
         return this;
@@ -19,32 +23,32 @@ public class CodeBuilder {
         return this;
     }
 
-    public CodeBuilder imports(String imports) {
+    public CodeBuilder _import(String imports) {
         codeBuilder.append("import ").append(imports);
         return this;
     }
 
-    public CodeBuilder packages(String packages) {
+    public CodeBuilder _package(String packages) {
         codeBuilder.append("package ").append(packages);
         return this;
     }
 
-    public CodeBuilder publics(String codes) {
+    public CodeBuilder _public(String codes) {
         codeBuilder.append("public ").append(codes);
         return this;
     }
 
-    public CodeBuilder privates(String codes) {
+    public CodeBuilder _private(String codes) {
         codeBuilder.append("private ").append(codes);
         return this;
     }
 
-    public CodeBuilder protecteds(String codes) {
+    public CodeBuilder _protected(String codes) {
         codeBuilder.append("protected ").append(codes);
         return this;
     }
 
-    public CodeBuilder statics(String codes) {
+    public CodeBuilder _static(String codes) {
         codeBuilder.append("static ").append(codes);
         return this;
     }
@@ -61,6 +65,10 @@ public class CodeBuilder {
 
     public String toString() {
         return codeBuilder.toString();
+    }
+
+    public StringBuilder getCodeBuilder() {
+        return codeBuilder;
     }
 
 }

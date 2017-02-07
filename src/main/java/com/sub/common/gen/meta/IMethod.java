@@ -8,8 +8,6 @@ public interface IMethod extends ICodeModel {
 
     IType getReturnType();
 
-    IClass getParent();
-
     List<IClass> getImports();
 
 }

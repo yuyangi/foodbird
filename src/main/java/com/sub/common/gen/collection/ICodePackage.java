@@ -1,4 +1,4 @@
-package com.sub.common.gen.packages;
+package com.sub.common.gen.collection;
 
 import com.sub.common.gen.ICoder;
 

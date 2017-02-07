@@ -1,5 +1,7 @@
 package com.sub.common.gen.meta;
 
+import com.sub.common.gen.tools.CodeBuilder;
+
 import java.util.List;
 
 /**
@@ -10,8 +12,6 @@ public abstract class Method extends BaseCodeModel implements IMethod {
     private IType returnType;
 
     private IParameter[] parameters;
-
-    private IClass parent;
 
     private List<IClass> imports;
 
@@ -31,16 +31,6 @@ public abstract class Method extends BaseCodeModel implements IMethod {
 
     public void setParameters(IParameter[] parameters) {
         this.parameters = parameters;
-    }
-
-    @Override
-    public IClass getParent() {
-        return parent;
-    }
-
-    @Override
-    public void setParent(IClass parent) {
-        this.parent = parent;
     }
 
     public List<IClass> getImports() {

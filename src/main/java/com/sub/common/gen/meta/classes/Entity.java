@@ -8,7 +8,6 @@ import com.sub.common.gen.meta.IMethod;
 import com.sub.common.gen.meta.method.Getter;
 import com.sub.common.gen.meta.method.Setter;
 import com.sub.common.gen.tools.CodeBuilder;
-import com.sub.common.gen.tools.NameUtils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -35,8 +34,11 @@ public class Entity extends BaseCodeModel implements IClass {
         if (methods == null) {
             methods = new ArrayList<>();
             if (attributes != null) {
-                attributes.forEach(a -> methods.add(new Getter(a)));
-                attributes.forEach(a -> methods.add(new Setter(a)));
+                attributes.forEach(a ->
+                {
+                    methods.add(new Getter(a, this));
+                    methods.add(new Setter(a, this));
+                });
             }
         }
         return methods;
@@ -59,9 +61,9 @@ public class Entity extends BaseCodeModel implements IClass {
     public String toCode() {
         CodeBuilder codes = new CodeBuilder();
         // package line
-        codes.packages(String.join(".", getPackages().getPackages())).end();
-        codes.append(Constants.LINE_SEPARATOR);
-        // imports
+        codes._package(String.join(".", getPackages().getPackages())).end();
+        codes.append(Constants.LINE_SEPARATOR).newLine();
+        // _import
         Set<String> imports = new HashSet<String>();
         boolean hasAttribute = attributes != null;
         if (hasAttribute) {
@@ -69,13 +71,13 @@ public class Entity extends BaseCodeModel implements IClass {
             attributes.stream().filter(attr -> attr.getType().getClassType() != null).forEach(
                     attr -> imports.add(attr.getType().getClassType().getPackages().toString() + "." + attr.getType().getClassType().getCode()));
         }
-        imports.forEach(imp -> codes.imports(imp).end().newLine());
+        imports.forEach(imp -> codes._import(imp).end().newLine());
         // class body
-        codes.append(Constants.LINE_SEPARATOR);
+        codes.newLine();
         // attributes
-        codes.publics("class ").append(getCode() + " {").append(Constants.LINE_SEPARATOR);
+        codes._public("class ").append(getCode() + " {").newLine().newLine();
         if (hasAttribute) {
-            attributes.forEach(attr -> codes.append(attr.toCode()));
+            attributes.forEach(attr -> codes.append(attr.toCode()).newLine());
         }
         // methods
         getMethods().forEach(method -> codes.append(method.toCode()).newLine());

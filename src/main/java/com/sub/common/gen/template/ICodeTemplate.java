@@ -1,10 +1,21 @@
 package com.sub.common.gen.template;
 
 import com.sub.common.gen.ICoder;
+import com.sub.common.gen.collection.ICodePackage;
+
+import java.util.List;
 
 public interface ICodeTemplate extends ICoder {
 
 	String getLanguage();
+
+    String suffix();
+
+    String name();
+
+    String code();
+
+    List<ICodePackage> codePackages();
 
     // 运算符与表达式
     //      算数

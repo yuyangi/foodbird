@@ -21,8 +21,6 @@ public class Class extends BaseCodeModel implements IClass {
 
     private List<IClass> generics;
 
-    private IClass parent;
-
     @Override
     public List<IAttribute> getAttributes() {
         return attributes;
@@ -37,8 +35,8 @@ public class Class extends BaseCodeModel implements IClass {
         if (methods == null) {
             methods = new ArrayList<>();
             if (attributes != null) {
-                attributes.forEach(a -> methods.add(new Getter(a)));
-                attributes.forEach(a -> methods.add(new Setter(a)));
+                attributes.forEach(a -> methods.add(new Getter(a, this)));
+                attributes.forEach(a -> methods.add(new Setter(a, this)));
             }
         }
         return methods;
@@ -68,35 +66,25 @@ public class Class extends BaseCodeModel implements IClass {
     }
 
     @Override
-    public IClass getParent() {
-        return parent;
-    }
-
-    @Override
-    public void setParent(IClass parent) {
-        this.parent = parent;
-    }
-
-    @Override
     public String toCode() {
         CodeBuilder codes = new CodeBuilder();
         // package line
-        codes.packages(String.join(".", getPackages().getPackages())).end();
+        codes._package(String.join(".", getPackages().getPackages())).end();
         codes.append(Constants.LINE_SEPARATOR);
-        // imports
-        codes.imports("java.util.*").end();
+        // _import
+        codes._import("java.util.*").end();
 
         boolean hasAttribute = attributes != null;
 
         if (hasAttribute) {
             hasAttribute = true;
             attributes.stream().filter(attr -> attr.getType().getClassType() != null).forEach(
-                    attr -> codes.imports(attr.getType().getClassType().getPackages() + "." + attr.getType().getClassType().getCode()));
+                    attr -> codes._import(attr.getType().getClassType().getPackages() + "." + attr.getType().getClassType().getCode()));
         }
         // class body
         codes.append(Constants.LINE_SEPARATOR);
         // attributes
-        codes.publics("class ").append(getCode() + " {").append(Constants.LINE_SEPARATOR);
+        codes._public("class ").append(getCode() + " {").append(Constants.LINE_SEPARATOR);
         if (hasAttribute) {
             attributes.forEach(attr -> codes.append(attr.toCode()));
         }

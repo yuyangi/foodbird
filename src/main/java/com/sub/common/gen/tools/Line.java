@@ -1,7 +1,7 @@
 package com.sub.common.gen.tools;
 
-import com.sub.common.gen.constants.Constants;
 import com.sub.common.gen.ICoder;
+import com.sub.common.gen.constants.Constants;
 
 /**
  * Created by yuyang on 2016/11/27.

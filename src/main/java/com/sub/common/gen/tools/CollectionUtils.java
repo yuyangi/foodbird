@@ -4,9 +4,7 @@ import com.sun.tools.javac.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 /**
  * Created by yy111026 on 2016/12/7.

@@ -3,9 +3,7 @@ package com.sub.common.gen.meta.method;
 import com.sub.common.gen.constants.Constants;
 import com.sub.common.gen.enums.Modifier;
 import com.sub.common.gen.meta.*;
-import com.sub.common.gen.meta.BaseCodeModel;
-import com.sub.common.gen.tools.Line;
-import com.sub.common.gen.tools.Segment;
+import com.sub.common.gen.tools.CodeBuilder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -22,9 +20,10 @@ public class Getter extends BaseCodeModel implements IMethod, Constants {
 
     }
 
-    public Getter(IAttribute attribute) {
+    public Getter(IAttribute attribute, ICodeModel parent) {
         super();
         this.attribute = attribute;
+        this.setParent(parent);
     }
 
     @Override
@@ -49,12 +48,14 @@ public class Getter extends BaseCodeModel implements IMethod, Constants {
 
     @Override
     public String toCode() {
-        return new Segment(INDENT,
-                new Line().append(getVisibility()).append(getReturnType().getClassType().getCode()).
-                        append(getter()).bracket("").leftBrace().swapLine(),
-                new Line(INDENT)._return().append(attribute.getCode()).stateEnd().swapLine(),
-                new Line().rightBrace()
-        ).toString();
+        CodeBuilder codes = new CodeBuilder();
+        codes.append(indent()).append("/**").newLine();
+        codes.append(indent()).append(" * getter for " + attribute.getName()).newLine();
+        codes.append(indent()).append(" */").newLine();
+        codes.append(indent()).append("public " + getReturnType().getClassType().getCode() + " " + getter() + "(){").newLine();
+        codes.append(indent()).append(INDENT + "return " + attribute.getCode() + ";").newLine();
+        codes.append(indent()).append("}").newLine();
+        return codes.toString();
     }
 
     private String getter() {

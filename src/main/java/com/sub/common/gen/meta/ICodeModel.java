@@ -16,5 +16,8 @@ public interface ICodeModel extends ICoder {
 	Modifier getVisibility();
 
 	Modifier getModifier();
-	
+
+	ICodeModel getParent();
+
+	String getComment();
 }

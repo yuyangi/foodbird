@@ -1,7 +1,7 @@
 package com.sub.common.gen.template.java;
 
 import com.sub.common.gen.ICoder;
-import com.sub.common.gen.packages.ICodePackage;
+import com.sub.common.gen.collection.ICodePackage;
 
 import java.util.List;
 
