@@ -4,9 +4,11 @@ import com.sub.common.gen.enums.DataType;
 import com.sub.common.gen.enums.Modifier;
 import com.sub.common.gen.io.FileCodeWriter;
 import com.sub.common.gen.meta.*;
-import com.sub.common.gen.meta.Class;
-import com.sub.common.gen.meta.Package;
+import com.sub.common.gen.meta.attribute.Attribute;
+import com.sub.common.gen.meta.classes.Class;
+import com.sub.common.gen.meta.packages.Package;
 import com.sub.common.gen.meta.classes.Entity;
+import com.sub.common.gen.meta.type.Type;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

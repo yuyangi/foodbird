@@ -1,5 +1,8 @@
-package com.sub.common.gen.meta;
+package com.sub.common.gen.meta.attribute;
 
+import com.sub.common.gen.meta.BaseCodeModel;
+import com.sub.common.gen.meta.IAttribute;
+import com.sub.common.gen.meta.IType;
 import com.sub.common.gen.tools.CodeBuilder;
 import com.sub.common.gen.tools.NameUtils;
 

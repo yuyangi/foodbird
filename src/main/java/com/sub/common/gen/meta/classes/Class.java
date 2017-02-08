@@ -1,6 +1,7 @@
-package com.sub.common.gen.meta;
+package com.sub.common.gen.meta.classes;
 
 import com.sub.common.gen.constants.Constants;
+import com.sub.common.gen.meta.*;
 import com.sub.common.gen.meta.method.Getter;
 import com.sub.common.gen.meta.method.Setter;
 import com.sub.common.gen.tools.CodeBuilder;
@@ -68,7 +69,7 @@ public class Class extends BaseCodeModel implements IClass {
     @Override
     public String toCode() {
         CodeBuilder codes = new CodeBuilder();
-        // package line
+        // packages line
         codes._package(String.join(".", getPackages().getPackages())).end();
         codes.append(Constants.LINE_SEPARATOR);
         // _import

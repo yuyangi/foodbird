@@ -1,4 +1,6 @@
-package com.sub.common.gen.meta;
+package com.sub.common.gen.meta.packages;
+
+import com.sub.common.gen.meta.IPackage;
 
 import java.util.ArrayList;
 import java.util.List;

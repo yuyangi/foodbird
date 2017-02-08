@@ -9,7 +9,9 @@ import org.springframework.stereotype.Component;
 @Component("serviceUpdate")
 public class SpringServiceUpdate extends SpringServiceMethod {
 
-    public Segment methodBody() {
+    @Override
+    public String toCode() {
         return null;
     }
+
 }

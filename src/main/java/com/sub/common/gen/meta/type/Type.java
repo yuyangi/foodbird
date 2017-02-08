@@ -1,6 +1,8 @@
-package com.sub.common.gen.meta;
+package com.sub.common.gen.meta.type;
 
 import com.sub.common.gen.enums.DataType;
+import com.sub.common.gen.meta.IClass;
+import com.sub.common.gen.meta.IType;
 
 /**
  * Created by yy111026 on 2017/2/6.

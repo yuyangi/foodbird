@@ -1,5 +1,6 @@
 package com.sub.common.gen.meta.method;
 
+import com.sub.common.gen.tools.CodeBuilder;
 import com.sub.common.gen.tools.Segment;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,8 @@ public class SpringServiceDelete extends SpringServiceMethod {
 
     @Override
     public String toCode() {
-        return null;
+        CodeBuilder codeBuilder = new CodeBuilder();
+        codeBuilder.append("public void ");
+        return codeBuilder.toString();
     }
 }

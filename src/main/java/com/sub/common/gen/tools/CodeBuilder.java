@@ -29,7 +29,7 @@ public class CodeBuilder {
     }
 
     public CodeBuilder _package(String packages) {
-        codeBuilder.append("package ").append(packages);
+        codeBuilder.append("packages ").append(packages);
         return this;
     }
 

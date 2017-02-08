@@ -60,7 +60,7 @@ public class Entity extends BaseCodeModel implements IClass {
     @Override
     public String toCode() {
         CodeBuilder codes = new CodeBuilder();
-        // package line
+        // packages line
         codes._package(String.join(".", getPackages().getPackages())).end();
         codes.append(Constants.LINE_SEPARATOR).newLine();
         // _import
