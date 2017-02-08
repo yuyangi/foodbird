@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
-import java.util.Arrays;
 
 /**
  * Created by yy111026 on 2017/2/7.
@@ -31,38 +30,35 @@ public class FileCodeWriter implements ICodeWriter {
         RandomAccessFile raf = new RandomAccessFile(file, "rw");
         FileChannel fileChannel = raf.getChannel();
 
-        byte[] data = content.getBytes("utf-8");
+        byte[] data = content.getBytes("UTF-8");
+        byte[] chunkData = null;
         int len = data.length;
         ByteBuffer buf = ByteBuffer.allocate(DATA_CHUNK);
         int start = 0;
         while (len >= DATA_CHUNK) {
 
             buf.clear(); // clear for re-write
-            byte[] newData = new byte[DATA_CHUNK];
-            System.arraycopy(data, start, newData, 0, DATA_CHUNK);
-
-            data = null;
-
+            chunkData = new byte[DATA_CHUNK];
+            System.arraycopy(data, start, chunkData, 0, DATA_CHUNK);
+            buf.put(chunkData);
             buf.flip(); // switches a Buffer from writing mode to reading mode
             fileChannel.write(buf);
             fileChannel.force(true);
 
             len -= DATA_CHUNK;
-            start += len;
+            start += DATA_CHUNK;
         }
 
         if (len > 0) {
-            System.out.println("write rest data chunk: " + len + "B");
-            buf = ByteBuffer.allocateDirect((int) len);
-            data = new byte[(int) len];
-            for (int i = 0; i < len; i++) {
-                buf.put(data[i]);
-            }
+            buf = ByteBuffer.allocateDirect(len);
+
+            chunkData = new byte[len];
+            System.arraycopy(data, start, chunkData, 0, len);
+            buf.put(data);
 
             buf.flip(); // switches a Buffer from writing mode to reading mode, position to 0, limit not changed
             fileChannel.write(buf);
             fileChannel.force(true);
-            data = null;
         }
 
         fileChannel.close();

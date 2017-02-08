@@ -2,6 +2,7 @@ package com.sub.common.main;
 
 import com.sub.common.gen.enums.DataType;
 import com.sub.common.gen.enums.Modifier;
+import com.sub.common.gen.io.FileCodeWriter;
 import com.sub.common.gen.meta.*;
 import com.sub.common.gen.meta.Class;
 import com.sub.common.gen.meta.Package;
@@ -9,6 +10,7 @@ import com.sub.common.gen.meta.classes.Entity;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,6 +76,12 @@ public class GenMain {
         attrs.add(attr4);
 
         dto1.setAttributes(attrs);
+
+        try {
+            FileCodeWriter.writeWithFileChannel("/Users/yy111026/", dto1.getCode()+".java", dto1.toCode());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         System.out.println(dto1.toCode());
     }
