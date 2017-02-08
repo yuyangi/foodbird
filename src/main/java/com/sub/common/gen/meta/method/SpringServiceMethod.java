@@ -6,6 +6,7 @@ import com.sub.common.gen.meta.*;
 import com.sub.common.gen.tools.CodeBuilder;
 import com.sub.common.gen.tools.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,8 +15,6 @@ import java.util.List;
  */
 public abstract class SpringServiceMethod extends BaseCodeModel implements IMethod, Constants {
 
-    private IClass parent;
-
     private List<IParameter> parameters;
 
     private IType returnType;
@@ -23,6 +22,8 @@ public abstract class SpringServiceMethod extends BaseCodeModel implements IMeth
     private List<IClass> _throws;
 
     private List<IClass> imports;
+
+    private List<IClass> references;
 
     @Override
     public IParameter[] getParameters() {
@@ -33,17 +34,6 @@ public abstract class SpringServiceMethod extends BaseCodeModel implements IMeth
     public IType getReturnType() {
         return returnType;
     }
-
-//    @Override
-//    public String toCode() {
-//        CodeBuilder codeBuilder = new CodeBuilder();
-//        codeBuilder.append("public " + getReturn() + " "+ getCode() + "(ProjectCondition condition)" + getThrows() + " {").append(LINE_SEPARATOR);
-//        codeBuilder.append("    List<Project> projects = objectBo.query(condition);").append(LINE_SEPARATOR);
-//        codeBuilder.append("    List<ProjectDto> projectDtos = ProjectConverter.convertList(projects)").append(LINE_SEPARATOR);
-//        codeBuilder.append("    return projectDtos;").append(LINE_SEPARATOR);
-//        codeBuilder.append("}").append(LINE_SEPARATOR);
-//        return codeBuilder.toString();
-//    }
 
     protected String getThrows() {
         if(_throws != null) {
@@ -63,8 +53,49 @@ public abstract class SpringServiceMethod extends BaseCodeModel implements IMeth
         return "void";
     }
 
+    protected String getParameterString() {
+        if(getParameters() != null) {
+            CodeBuilder paramBuilder = new CodeBuilder();
+            List<String> paramDef = new ArrayList<>();
+            for (IParameter param : getParameters()) {
+                paramDef.add(param.getType().getClassType().getCode() + " " + param.getCode());
+            }
+            paramBuilder.append(String.join(", ", paramDef));
+            return paramBuilder.toString();
+        }
+        return null;
+    }
+
     @Override
     public List<IClass> getImports() {
         return null;
+    }
+
+    public void setParameters(List<IParameter> parameters) {
+        this.parameters = parameters;
+    }
+
+    public void setReturnType(IType returnType) {
+        this.returnType = returnType;
+    }
+
+    public List<IClass> get_throws() {
+        return _throws;
+    }
+
+    public void set_throws(List<IClass> _throws) {
+        this._throws = _throws;
+    }
+
+    public void setImports(List<IClass> imports) {
+        this.imports = imports;
+    }
+
+    public List<IClass> getReferences() {
+        return references;
+    }
+
+    public void setReferences(List<IClass> references) {
+        this.references = references;
     }
 }

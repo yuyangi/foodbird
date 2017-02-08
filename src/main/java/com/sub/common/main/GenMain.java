@@ -5,7 +5,7 @@ import com.sub.common.gen.enums.Modifier;
 import com.sub.common.gen.io.FileCodeWriter;
 import com.sub.common.gen.meta.*;
 import com.sub.common.gen.meta.attribute.Attribute;
-import com.sub.common.gen.meta.classes.Class;
+import com.sub.common.gen.meta.classes.ClassAdapter;
 import com.sub.common.gen.meta.packages.Package;
 import com.sub.common.gen.meta.classes.Entity;
 import com.sub.common.gen.meta.type.Type;
@@ -24,18 +24,14 @@ public class GenMain {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"classpath:com/sub/spring/spring-common.xml"});
         IMethod getter = (IMethod) context.getBean("getter");
-        Class classString = new Class();
-        classString.setPackages(new Package(String.class.getName().substring(0, String.class.getName().lastIndexOf('.'))));
-        Class classInt = new Class();
-        classInt.setPackages(new Package(Integer.class.getName().substring(0, String.class.getName().lastIndexOf('.'))));
-        classString.setCode("String");
-        classInt.setCode("Integer");
+        IClass ClassString = new ClassAdapter(String.class);
+        IClass ClassInt = new ClassAdapter(Integer.class);
         Type typeString = new Type();
         Type typeInt = new Type();
         typeString.setType(DataType.CLASS);
-        typeString.setClassType(classString);
+        typeString.setClassType(ClassString);
         typeInt.setType(DataType.CLASS);
-        typeInt.setClassType(classInt);
+        typeInt.setClassType(ClassInt);
 
         IPackage packages = new Package("com.sub.test.business");
 

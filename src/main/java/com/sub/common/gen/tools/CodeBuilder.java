@@ -9,8 +9,14 @@ public class CodeBuilder {
 
     private StringBuilder codeBuilder = new StringBuilder();
 
+    private String indent = "";
+
     public CodeBuilder() {
 
+    }
+
+    public CodeBuilder(String indent) {
+        this.indent = indent;
     }
 
     public CodeBuilder end() {
@@ -19,42 +25,42 @@ public class CodeBuilder {
     }
 
     public CodeBuilder append(String codes) {
-        codeBuilder.append(codes);
+        codeBuilder.append(indent).append(indent).append(codes);
         return this;
     }
 
     public CodeBuilder _import(String imports) {
-        codeBuilder.append("import ").append(imports);
+        codeBuilder.append(indent).append(indent).append("import ").append(imports);
         return this;
     }
 
     public CodeBuilder _package(String packages) {
-        codeBuilder.append("packages ").append(packages);
+        codeBuilder.append(indent).append("packages ").append(packages);
         return this;
     }
 
     public CodeBuilder _public(String codes) {
-        codeBuilder.append("public ").append(codes);
+        codeBuilder.append(indent).append("public ").append(codes);
         return this;
     }
 
     public CodeBuilder _private(String codes) {
-        codeBuilder.append("private ").append(codes);
+        codeBuilder.append(indent).append("private ").append(codes);
         return this;
     }
 
     public CodeBuilder _protected(String codes) {
-        codeBuilder.append("protected ").append(codes);
+        codeBuilder.append(indent).append("protected ").append(codes);
         return this;
     }
 
     public CodeBuilder _static(String codes) {
-        codeBuilder.append("static ").append(codes);
+        codeBuilder.append(indent).append("static ").append(codes);
         return this;
     }
 
     public CodeBuilder modifier(String modifier) {
-        codeBuilder.append(modifier + " ");
+        codeBuilder.append(indent).append(modifier + " ");
         return this;
     }
 
