@@ -1,6 +1,7 @@
 package com.sub.common.gen.meta.method;
 
 import com.sub.common.gen.meta.IClass;
+import com.sub.common.gen.meta.IReference;
 import com.sub.common.gen.tools.CodeBuilder;
 import com.sub.common.gen.tools.Segment;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,10 @@ import org.springframework.stereotype.Component;
 public class SpringServiceQuery extends SpringServiceMethod {
 
     private IClass entity;
+
+    private IReference convertRef;
+
+    private IReference mapperRef;
 
     @Override
     public String getCode() {

@@ -5,6 +5,10 @@ package com.sub.common.gen.enums;
  */
 public enum CodeForm {
 
-    Define, State, Param, Invoke, Lambda;
+    Define,
+    State,
+    Param,
+    Invoke,
+    Variable;
 
 }
