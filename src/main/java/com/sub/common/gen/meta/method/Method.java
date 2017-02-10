@@ -2,6 +2,7 @@ package com.sub.common.gen.meta.method;
 
 import com.sub.common.gen.constants.Constants;
 import com.sub.common.gen.enums.DataType;
+import com.sub.common.gen.enums.MethodType;
 import com.sub.common.gen.meta.*;
 import com.sub.common.gen.tools.CodeBuilder;
 import com.sub.common.gen.tools.CollectionUtils;
@@ -22,6 +23,8 @@ public abstract class Method extends BaseCodeModel implements IMethod, Constants
     private List<IClass> imports;
 
     private List<IClass> exceptions;
+
+    private MethodType methodType;
 
     @Override
     public IType getReturnType() {
@@ -87,6 +90,23 @@ public abstract class Method extends BaseCodeModel implements IMethod, Constants
         codeBuilder.append(methodBody()).newLine();
         codeBuilder.append("}").newLine();
         return codeBuilder.toString();
+    }
+
+    public List<IClass> getExceptions() {
+        return exceptions;
+    }
+
+    public void setExceptions(List<IClass> exceptions) {
+        this.exceptions = exceptions;
+    }
+
+    @Override
+    public MethodType getMethodType() {
+        return methodType;
+    }
+
+    public void setMethodType(MethodType methodType) {
+        this.methodType = methodType;
     }
 
     public abstract String methodBody();

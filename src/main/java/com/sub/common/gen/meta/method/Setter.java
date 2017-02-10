@@ -1,6 +1,7 @@
 package com.sub.common.gen.meta.method;
 
 import com.sub.common.gen.constants.Constants;
+import com.sub.common.gen.enums.MethodType;
 import com.sub.common.gen.enums.Modifier;
 import com.sub.common.gen.meta.*;
 import com.sub.common.gen.tools.CodeBuilder;
@@ -15,6 +16,8 @@ import java.util.List;
 public class Setter extends BaseCodeModel implements IMethod, Constants {
 
     private IAttribute attribute;
+
+    private MethodType methodType;
 
     public Setter() {
 
@@ -65,5 +68,22 @@ public class Setter extends BaseCodeModel implements IMethod, Constants {
     @Override
     public List<IClass> getImports() {
         return null;
+    }
+
+    public IAttribute getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(IAttribute attribute) {
+        this.attribute = attribute;
+    }
+
+    @Override
+    public MethodType getMethodType() {
+        return methodType;
+    }
+
+    public void setMethodType(MethodType methodType) {
+        this.methodType = methodType;
     }
 }

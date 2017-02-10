@@ -1,19 +1,21 @@
 package com.sub.common.gen.strategy;
 
 import com.sub.common.gen.ICoder;
+import com.sub.common.gen.exception.UnsupportedFormException;
+import com.sub.common.gen.meta.IParameter;
 
 /**
  * Created by yy111026 on 2017/2/9.
  */
-public interface ICodeElemStrategy extends ICoder {
+public interface ICodeElemStrategy {
 
-    String defineForm();
+    String defineForm() throws UnsupportedFormException;
 
-    String stateForm();
+    String stateForm() throws UnsupportedFormException;
 
-    String invokeForm();
+    String invokeForm(IParameter... parameters) throws UnsupportedFormException;
 
-    String variableForm();
+    String variableForm(String varName) throws UnsupportedFormException;
 
 }
 

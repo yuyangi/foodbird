@@ -1,6 +1,7 @@
 package com.sub.common.gen.tools;
 
 import com.sub.common.gen.constants.Constants;
+import com.sub.common.gen.meta.ICodeModel;
 
 /**
  * Created by yy111026 on 2017/2/6.
@@ -64,8 +65,18 @@ public class CodeBuilder {
         return this;
     }
 
+    public CodeBuilder assign(String valueExp) {
+        codeBuilder.append(indent).append(" = ").append(valueExp);
+        return this;
+    }
+
     public CodeBuilder newLine() {
         codeBuilder.append(Constants.LINE_SEPARATOR);
+        return this;
+    }
+
+    public CodeBuilder append(ICodeModel model) {
+        codeBuilder.append(indent).append(model.toCode());
         return this;
     }
 
