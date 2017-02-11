@@ -1,22 +1,116 @@
 package com.sub.common.gen.template;
 
-import java.util.List;
+import com.sub.common.gen.ICoder;
+import com.sub.common.gen.collection.ICodePackage;
 
-import com.sub.common.gen.model.IClass;
-import com.sub.common.gen.model.ICoder;
-import com.sub.common.gen.model.IMethod;
-import com.sub.common.gen.model.ICodeModel;
+import java.util.List;
 
 public interface ICodeTemplate extends ICoder {
 
+    /**
+     * 语言
+     * @return
+     */
 	String getLanguage();
 
-	String getModule();
+    /**
+     * 文件类型后缀
+     * @return
+     */
+    String suffix();
 
-    String getLevel();
+    /**
+     * 名称
+     * @return
+     */
+    String name();
 
-	List<ICoder> getCoders();
+    /**
+     * 编码
+     * @return
+     */
+    String code();
 
-	void generate();
+    /**
+     * 创建(实例化)
+     * @return
+     */
+    String create();
 
+    /**
+     * 循环
+     * @return
+     */
+    String loop();
+
+    /**
+     * 赋值
+     * @return
+     */
+    String assign();
+
+    /**
+     * 调用
+     * @return
+     */
+    String invoke();
+
+    /**
+     * 运算
+     * @return
+     */
+    String operation();
+
+    /**
+     * 关系运算 (大于小于等于) 的语法格式
+     *
+     * @return 关系运算相关代码
+     */
+    String relation();
+
+    /**
+     * 定义声明的语法格式
+     * 声明变了,声明类,声明数组相关代码格式
+     * 生成:
+     *      private int a = 0;
+     *      public Product product = null;
+     *      protect int[] arr;
+     * @return 定义声明相关代码
+     */
+    String define();
+
+    /**
+     * 流程控制语句(ifelse switch)
+     * 生成 ifelse
+     *      if (something) {
+     *
+     *      } else if (something else) {
+     *
+     *      } else {
+     *
+     *      }
+     * 生成 switch
+     *      switch (x) {
+     *          case 1:
+     *              // todo something
+     *          case 2:
+     *              // todo something
+     *          default:
+     *              break;
+     *      }
+     * @return 流程控制相关代码
+     */
+    String flowControl();
+
+    // 运算符与表达式
+    //      算数
+    //      赋值
+    //      自增(减)
+    //      关系(大于小于)
+    //      逻辑运算符
+    //      位运算
+    //      三元运算
+    // 数组
+    // 流程控制语句(ifelse switch)
+    // 循环(for while)
 }

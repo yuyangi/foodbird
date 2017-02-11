@@ -1,13 +1,13 @@
 package com.sub.common.gen.impl;
 
-import com.sub.common.gen.constants.IConstants;
+import com.sub.common.gen.constants.Constants;
 import com.sub.common.gen.tools.FileUtils;
 import com.sub.common.gen.tools.NameUtils;
 
 /**
  * Created by yy111026 on 2016/12/8.
  */
-public class ServiceGenerator implements IConstants {
+public class ServiceGenerator implements Constants {
 
 
     public String generate(String basePath, EntityMeta entityMeta) {

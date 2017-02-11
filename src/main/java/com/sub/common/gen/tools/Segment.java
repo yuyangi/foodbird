@@ -14,6 +14,12 @@ public class Segment {
        this.lines = lines;
     }
 
+    public Segment(String indent, Line... lines) {
+        super();
+        this.indent = indent;
+        this.lines = lines;
+    }
+
     public String toString() {
         if(lines != null) {
             StringBuilder sb = new StringBuilder();

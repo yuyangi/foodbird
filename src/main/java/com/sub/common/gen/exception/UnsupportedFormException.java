@@ -1,0 +1,27 @@
+package com.sub.common.gen.exception;
+
+/**
+ * Created by yy111026 on 2017/2/10.
+ */
+public class UnsupportedFormException extends Exception {
+
+    public UnsupportedFormException() {
+
+    }
+
+    public UnsupportedFormException(String message) {
+        super(message);
+    }
+
+    public UnsupportedFormException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public UnsupportedFormException(Throwable cause) {
+        super(cause);
+    }
+
+    protected UnsupportedFormException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
+}
