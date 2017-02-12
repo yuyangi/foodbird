@@ -2,7 +2,6 @@ package com.sub.common.gen.strategy.elem;
 
 import com.sub.common.gen.exception.UnsupportedFormException;
 import com.sub.common.gen.meta.IAttribute;
-import com.sub.common.gen.meta.ICodeModel;
 import com.sub.common.gen.meta.IParameter;
 import com.sub.common.gen.tools.CodeBuilder;
 import com.sub.common.gen.tools.NameUtils;

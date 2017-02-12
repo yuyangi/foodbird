@@ -1,6 +1,5 @@
 package com.sub.common.gen.strategy;
 
-import com.sub.common.gen.ICoder;
 import com.sub.common.gen.exception.UnsupportedFormException;
 import com.sub.common.gen.meta.IParameter;
 

@@ -1,20 +1,20 @@
 package com.sub.common.main;
 
-import com.sub.common.gen.enums.DataType;
-import com.sub.common.gen.enums.Modifier;
-import com.sub.common.gen.io.FileCodeWriter;
-import com.sub.common.gen.meta.*;
-import com.sub.common.gen.meta.attribute.Attribute;
-import com.sub.common.gen.meta.classes.ClassAdapter;
-import com.sub.common.gen.meta.packages.Package;
-import com.sub.common.gen.meta.classes.Entity;
-import com.sub.common.gen.meta.type.Type;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.sub.common.gen.enums.DataType;
+import com.sub.common.gen.enums.Modifier;
+import com.sub.common.gen.io.FileCodeWriter;
+import com.sub.common.gen.meta.IAttribute;
+import com.sub.common.gen.meta.IClass;
+import com.sub.common.gen.meta.IPackage;
+import com.sub.common.gen.meta.attribute.Attribute;
+import com.sub.common.gen.meta.classes.ClassAdapter;
+import com.sub.common.gen.meta.classes.Entity;
+import com.sub.common.gen.meta.packages.Package;
+import com.sub.common.gen.meta.type.Type;
 
 /**
  * Created by yy111026 on 2017/1/24.
@@ -22,8 +22,8 @@ import java.util.List;
 public class GenMain {
 
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"classpath:com/sub/spring/spring-common.xml"});
-        IMethod getter = (IMethod) context.getBean("getter");
+        //ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"classpath:com/sub/spring/spring-common.xml"});
+        //IMethod getter = (IMethod) context.getBean("getter");
         IClass ClassString = new ClassAdapter(String.class);
         IClass ClassInt = new ClassAdapter(Integer.class);
         Type typeString = new Type();
@@ -85,4 +85,3 @@ public class GenMain {
     }
 
 }
->>>>>>> branch 'master' of https://github.com/yuyangi/foodbird.git

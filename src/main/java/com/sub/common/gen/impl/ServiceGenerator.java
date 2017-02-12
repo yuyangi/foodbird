@@ -2,7 +2,6 @@ package com.sub.common.gen.impl;
 
 import com.sub.common.gen.constants.Constants;
 import com.sub.common.gen.tools.FileUtils;
-import com.sub.common.gen.tools.NameUtils;
 
 /**
  * Created by yy111026 on 2016/12/8.
@@ -36,10 +35,6 @@ public class ServiceGenerator implements Constants {
         FileUtils.createFile(fileName);
         FileUtils.writeFile(fileName, generate(packages, entityName));
         return "Success";
-    }
-
-    private String getVarName(String entityName) {
-        return NameUtils.getVarName(entityName);
     }
 
 }

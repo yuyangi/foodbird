@@ -1,15 +1,13 @@
 package com.sub.common.gen.strategy.elem;
 
-import com.sub.common.gen.exception.UnsupportedFormException;
-import com.sub.common.gen.meta.ICodeModel;
-import com.sub.common.gen.meta.IMethod;
-import com.sub.common.gen.meta.IParameter;
-import com.sub.common.gen.strategy.ICodeElemStrategy;
-import com.sub.common.gen.tools.CodeBuilder;
-import com.sub.common.gen.tools.NameUtils;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.sub.common.gen.exception.UnsupportedFormException;
+import com.sub.common.gen.meta.IMethod;
+import com.sub.common.gen.meta.IParameter;
+import com.sub.common.gen.tools.CodeBuilder;
+import com.sub.common.gen.tools.NameUtils;
 
 /**
  * Created by yy111026 on 2017/2/9.

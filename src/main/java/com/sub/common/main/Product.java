@@ -1,4 +1,4 @@
-package com.sub.test.business;
+package com.sub.common.main;
 
 import java.lang.String;
 import java.lang.Integer;

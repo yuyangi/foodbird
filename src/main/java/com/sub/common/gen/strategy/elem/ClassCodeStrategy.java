@@ -1,13 +1,12 @@
 package com.sub.common.gen.strategy.elem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.sub.common.gen.meta.IClass;
-import com.sub.common.gen.meta.ICodeModel;
 import com.sub.common.gen.meta.IParameter;
 import com.sub.common.gen.tools.CodeBuilder;
 import com.sub.common.gen.tools.NameUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by yy111026 on 2017/2/9.

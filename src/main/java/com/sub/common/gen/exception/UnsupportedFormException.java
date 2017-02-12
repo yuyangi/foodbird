@@ -5,7 +5,12 @@ package com.sub.common.gen.exception;
  */
 public class UnsupportedFormException extends Exception {
 
-    public UnsupportedFormException() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public UnsupportedFormException() {
 
     }
 

@@ -1,9 +1,9 @@
 package com.sub.common.gen.template.java;
 
+import java.util.List;
+
 import com.sub.common.gen.ICoder;
 import com.sub.common.gen.collection.ICodePackage;
-
-import java.util.List;
 
 /**
  * Created by yy111026 on 2017/2/4.
@@ -29,12 +29,12 @@ public class MyJavaCodePackage implements ICodePackage {
 
     @Override
     public String getModule() {
-        return "Business";
+        return module;
     }
 
     @Override
     public String getLevel() {
-        return "DTO";
+        return level;
     }
 
     @Override
@@ -51,4 +51,29 @@ public class MyJavaCodePackage implements ICodePackage {
     public String toCode() {
         return null;
     }
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public List<ICoder> getCodes() {
+		return codes;
+	}
+
+	public void setCodes(List<ICoder> codes) {
+		this.codes = codes;
+	}
+
+	public void setModule(String module) {
+		this.module = module;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+    
 }

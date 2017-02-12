@@ -1,11 +1,15 @@
 package com.sub.common.gen.meta.classes;
 
-import com.sub.common.gen.constants.Constants;
-import com.sub.common.gen.meta.*;
+import java.util.List;
+
+import com.sub.common.gen.meta.BaseCodeModel;
+import com.sub.common.gen.meta.IAttribute;
+import com.sub.common.gen.meta.IClass;
+import com.sub.common.gen.meta.ICodeModel;
+import com.sub.common.gen.meta.IMethod;
+import com.sub.common.gen.meta.IPackage;
 import com.sub.common.gen.meta.packages.Package;
 import com.sub.common.gen.tools.CodeBuilder;
-
-import java.util.List;
 
 /**
  * Created by yy111026 on 2017/2/8.

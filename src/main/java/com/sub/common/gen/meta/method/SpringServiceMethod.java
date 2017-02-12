@@ -68,7 +68,7 @@ public abstract class SpringServiceMethod extends BaseCodeModel implements IMeth
 
     @Override
     public List<IClass> getImports() {
-        return null;
+        return imports;
     }
 
     public void setParameters(List<IParameter> parameters) {

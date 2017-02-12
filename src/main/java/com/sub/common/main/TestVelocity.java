@@ -25,7 +25,7 @@ public class TestVelocity {
         context.put("name", "Liang");
         context.put("date", (new Date()).toString());
         //为后面的展示，提前输入List数值
-        List temp = new ArrayList();
+        List<String> temp = new ArrayList<>();
         temp.add("1");
         temp.add("2");
         context.put("list", temp);

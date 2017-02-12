@@ -5,7 +5,12 @@ package com.sub.common.gen.exception;
  */
 public class UnsupportedParameterException extends Exception {
 
-    public UnsupportedParameterException() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public UnsupportedParameterException() {
         super();
     }
 

@@ -1,9 +1,6 @@
 package com.sub.common.gen.template;
 
 import com.sub.common.gen.ICoder;
-import com.sub.common.gen.collection.ICodePackage;
-
-import java.util.List;
 
 public interface ICodeTemplate extends ICoder {
 

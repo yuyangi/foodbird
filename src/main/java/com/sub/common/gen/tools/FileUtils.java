@@ -85,8 +85,7 @@ public class FileUtils {
     }
 
     public static void main(String[] args) {
-        FileUtils fileUtils = new FileUtils();
-        fileUtils.createFile("/Users/yy111026/Desktop/aaa.txt");
+        FileUtils.createFile("/Users/yy111026/Desktop/aaa.txt");
         System.out.println("File create success !");
     }
 

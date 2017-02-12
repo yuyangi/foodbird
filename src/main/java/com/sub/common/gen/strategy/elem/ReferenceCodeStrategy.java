@@ -2,7 +2,6 @@ package com.sub.common.gen.strategy.elem;
 
 import com.sub.common.gen.meta.ICodeModel;
 import com.sub.common.gen.meta.IParameter;
-import com.sub.common.gen.strategy.ICodeElemStrategy;
 
 /**
  * Created by yy111026 on 2017/2/9.
