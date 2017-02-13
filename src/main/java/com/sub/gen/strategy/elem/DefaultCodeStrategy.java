@@ -3,7 +3,6 @@ package com.sub.gen.strategy.elem;
 import com.sub.gen.exception.UnsupportedFormException;
 import com.sub.gen.meta.ICodeModel;
 import com.sub.gen.meta.IParameter;
-import com.sub.gen.strategy.ICodeElemStrategy;
 
 /**
  * Created by yy111026 on 2017/2/13.

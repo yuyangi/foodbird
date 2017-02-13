@@ -3,7 +3,6 @@ package com.sub.gen.strategy.elem;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sub.gen.meta.IClass;
 import com.sub.gen.meta.ICodeModel;
 import com.sub.gen.meta.IParameter;
 import com.sub.gen.tools.CodeBuilder;

@@ -1,9 +1,10 @@
 package com.sub.gen.meta.method;
 
-import com.sub.gen.meta.IClass;
-import com.sub.gen.meta.IReference;
-import com.sub.gen.tools.CodeBuilder;
 import org.springframework.stereotype.Component;
+
+import com.sub.gen.enums.MethodType;
+import com.sub.gen.meta.IClass;
+import com.sub.gen.tools.CodeBuilder;
 
 /**
  * Created by yuyang on 2016/11/27.
@@ -12,10 +13,6 @@ import org.springframework.stereotype.Component;
 public class SpringServiceQuery extends SpringServiceMethod {
 
     private IClass entity;
-
-    private IReference convertRef;
-
-    private IReference mapperRef;
 
     @Override
     public String getCode() {
@@ -32,5 +29,11 @@ public class SpringServiceQuery extends SpringServiceMethod {
         codeBuilder.append("}").newLine();
         return codeBuilder.toString();
     }
+
+	@Override
+	public MethodType getMethodType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

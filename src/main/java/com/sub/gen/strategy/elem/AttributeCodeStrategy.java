@@ -1,7 +1,6 @@
 package com.sub.gen.strategy.elem;
 
 import com.sub.gen.exception.UnsupportedFormException;
-import com.sub.gen.meta.IAttribute;
 import com.sub.gen.meta.ICodeModel;
 import com.sub.gen.meta.IParameter;
 import com.sub.gen.tools.CodeBuilder;

@@ -1,6 +1,7 @@
 package com.sub.gen.tools;
 
 import com.sub.gen.constants.Constants;
+import com.sub.gen.enums.Modifier;
 import com.sub.gen.meta.ICodeModel;
 
 /**
@@ -30,16 +31,21 @@ public class CodeBuilder {
         return this;
     }
 
-    public CodeBuilder _import(String imports) {
+    public CodeBuilder addImport(String imports) {
         codeBuilder.append(indent).append(indent).append("import ").append(imports);
         return this;
     }
 
-    public CodeBuilder _package(String packages) {
+    public CodeBuilder addPackage(String packages) {
         codeBuilder.append(indent).append("packages ").append(packages);
         return this;
     }
 
+    public CodeBuilder addModifier(Modifier modifier, String modifyTo) {
+        codeBuilder.append(indent).append(modifier.name().toLowerCase() + " ").append(modifyTo);
+        return this;
+    }
+    
     public CodeBuilder _public(String codes) {
         codeBuilder.append(indent).append("public ").append(codes);
         return this;

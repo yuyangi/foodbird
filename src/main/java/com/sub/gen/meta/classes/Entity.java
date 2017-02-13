@@ -61,7 +61,7 @@ public class Entity extends BaseCodeModel implements IClass {
     public String toCode() {
         CodeBuilder codes = new CodeBuilder();
         // packages line
-        codes._package(String.join(".", getPackages().getPackages())).end();
+        codes.addPackage(String.join(".", getPackages().getPackages())).end();
         codes.append(Constants.LINE_SEPARATOR).newLine();
         // _import
         Set<String> imports = new HashSet<String>();
@@ -71,7 +71,7 @@ public class Entity extends BaseCodeModel implements IClass {
             attributes.stream().filter(attr -> attr.getType().getClassType() != null).forEach(
                     attr -> imports.add(attr.getType().getClassType().getPackages().toString() + "." + attr.getType().getClassType().getCode()));
         }
-        imports.forEach(imp -> codes._import(imp).end().newLine());
+        imports.forEach(imp -> codes.addImport(imp).end().newLine());
         // class body
         codes.newLine();
         // attributes

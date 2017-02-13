@@ -5,6 +5,7 @@ import com.sub.gen.meta.BaseCodeModel;
 import com.sub.gen.meta.IClass;
 import com.sub.gen.meta.IMethod;
 import com.sub.gen.meta.IReference;
+import com.sub.gen.tools.CodeBuilder;
 
 /**
  * @author yy111026
@@ -47,7 +48,8 @@ public class Reference extends BaseCodeModel implements IReference {
 
     @Override
     public String toCode() {
-
-        return null;
+    	CodeBuilder code = new CodeBuilder();
+    	code.append(model)
+        return code.toString();
     }
 }

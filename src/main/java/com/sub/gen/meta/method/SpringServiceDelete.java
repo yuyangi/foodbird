@@ -1,5 +1,6 @@
 package com.sub.gen.meta.method;
 
+import com.sub.gen.enums.MethodType;
 import com.sub.gen.tools.CodeBuilder;
 import com.sub.gen.tools.Segment;
 import org.springframework.stereotype.Component;
@@ -20,4 +21,10 @@ public class SpringServiceDelete extends SpringServiceMethod {
         codeBuilder.append("public void ");
         return codeBuilder.toString();
     }
+
+	@Override
+	public MethodType getMethodType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

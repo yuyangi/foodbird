@@ -1,6 +1,5 @@
 package com.sub.gen.strategy.elem;
 
-import com.sub.gen.meta.IAttribute;
 import com.sub.gen.meta.ICodeModel;
 import com.sub.gen.strategy.ICodeElemStrategy;
 
