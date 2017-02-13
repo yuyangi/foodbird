@@ -4,17 +4,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sub.common.gen.enums.DataType;
-import com.sub.common.gen.enums.Modifier;
-import com.sub.common.gen.io.FileCodeWriter;
-import com.sub.common.gen.meta.IAttribute;
-import com.sub.common.gen.meta.IClass;
-import com.sub.common.gen.meta.IPackage;
-import com.sub.common.gen.meta.attribute.Attribute;
-import com.sub.common.gen.meta.classes.ClassAdapter;
-import com.sub.common.gen.meta.classes.Entity;
-import com.sub.common.gen.meta.packages.Package;
-import com.sub.common.gen.meta.type.Type;
+import com.sub.gen.enums.DataType;
+import com.sub.gen.enums.Modifier;
+import com.sub.gen.io.FileCodeWriter;
+import com.sub.gen.meta.IAttribute;
+import com.sub.gen.meta.IClass;
+import com.sub.gen.meta.IPackage;
+import com.sub.gen.meta.attribute.Attribute;
+import com.sub.gen.meta.classes.ClassAdapter;
+import com.sub.gen.meta.classes.Entity;
+import com.sub.gen.meta.packages.Package;
+import com.sub.gen.meta.type.Type;
 
 /**
  * Created by yy111026 on 2017/1/24.
