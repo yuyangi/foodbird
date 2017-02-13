@@ -1,5 +1,6 @@
 package com.sub.gen.strategy.factory;
 
+import com.sub.gen.enums.CodeElement;
 import com.sub.gen.strategy.ICodeElemStrategy;
 
 /**
@@ -7,6 +8,6 @@ import com.sub.gen.strategy.ICodeElemStrategy;
  */
 public interface ICodeElemStrategyFactory {
 
-    ICodeElemStrategy create();
+    ICodeElemStrategy create(CodeElement codeElement);
 
 }

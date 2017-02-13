@@ -49,7 +49,6 @@ public class Reference extends BaseCodeModel implements IReference {
     @Override
     public String toCode() {
     	CodeBuilder code = new CodeBuilder();
-    	code.append(model)
         return code.toString();
     }
 }
