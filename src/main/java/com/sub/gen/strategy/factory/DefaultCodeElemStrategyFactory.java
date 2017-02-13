@@ -12,8 +12,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Created by yy111026 on 2017/2/13.
- *
  * @author yy111026
  * @date 2017/02/13
  */
