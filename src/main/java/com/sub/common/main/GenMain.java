@@ -17,7 +17,7 @@ import com.sub.gen.meta.packages.Package;
 import com.sub.gen.meta.type.Type;
 
 /**
- * Created by yy111026 on 2017/1/24.
+ * @author yy111026 on 2017/1/24.
  */
 public class GenMain {
 
