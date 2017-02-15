@@ -12,9 +12,11 @@ import com.sub.gen.meta.packages.Package;
 import com.sub.gen.tools.CodeBuilder;
 
 /**
+ * 用作类型使用
+ * 可以直接生成String,Integer,Long等常用类型的定义类代码
  * Created by yy111026 on 2017/2/8.
  */
-public class ClassAdapter extends BaseCodeModel implements IClass {
+public class ClassAdapter extends BaseCodeModel implements JClass {
 
     private Class<?> clz;
 
@@ -35,6 +37,11 @@ public class ClassAdapter extends BaseCodeModel implements IClass {
 
     public ClassAdapter() {
 
+    }
+
+    @Override
+    public List<IMethod> getConstructors() {
+        return null;
     }
 
     @Override

@@ -16,41 +16,24 @@ import java.util.List;
  */
 public abstract class Method extends BaseCodeModel implements IMethod, Constants {
 
+    private List<IParameter> parameters;
+
     private IType returnType;
-
-    private IParameter[] parameters;
-
-    private List<IClass> imports;
 
     private List<IClass> exceptions;
 
-    private MethodType methodType;
+    private List<IClass> imports;
+
+    private List<IClass> references;
+
+    @Override
+    public IParameter[] getParameters() {
+        return parameters.toArray(new IParameter[0]);
+    }
 
     @Override
     public IType getReturnType() {
         return returnType;
-    }
-
-    public void setReturnType(IType returnType) {
-        this.returnType = returnType;
-    }
-
-    @Override
-    public IParameter[] getParameters() {
-        return parameters;
-    }
-
-    public void setParameters(IParameter[] parameters) {
-        this.parameters = parameters;
-    }
-
-    @Override
-    public List<IClass> getImports() {
-        return imports;
-    }
-
-    public void setImports(List<IClass> imports) {
-        this.imports = imports;
     }
 
     protected String getThrows() {
@@ -85,12 +68,16 @@ public abstract class Method extends BaseCodeModel implements IMethod, Constants
     }
 
     @Override
-    public String toCode() {
-        CodeBuilder codeBuilder = new CodeBuilder(indent());
-        codeBuilder.append("public " + getReturn() + " "+ getCode() + "(" + getParameterString() + ") " + getThrows() + " {").newLine();
-        codeBuilder.append(methodBody()).newLine();
-        codeBuilder.append("}").newLine();
-        return codeBuilder.toString();
+    public List<IClass> getImports() {
+        return imports;
+    }
+
+    public void setParameters(List<IParameter> parameters) {
+        this.parameters = parameters;
+    }
+
+    public void setReturnType(IType returnType) {
+        this.returnType = returnType;
     }
 
     public List<IClass> getExceptions() {
@@ -101,13 +88,25 @@ public abstract class Method extends BaseCodeModel implements IMethod, Constants
         this.exceptions = exceptions;
     }
 
-    @Override
-    public MethodType getMethodType() {
-        return methodType;
+    public void setImports(List<IClass> imports) {
+        this.imports = imports;
     }
 
-    public void setMethodType(MethodType methodType) {
-        this.methodType = methodType;
+    public List<IClass> getReferences() {
+        return references;
+    }
+
+    public void setReferences(List<IClass> references) {
+        this.references = references;
+    }
+
+    @Override
+    public String toCode() {
+        CodeBuilder codeBuilder = new CodeBuilder(indent());
+        codeBuilder.append("public " + getReturn() + " "+ getCode() + "(" + getParameterString() + ") " + getThrows() + " {").newLine();
+        codeBuilder.append(methodBody()).newLine();
+        codeBuilder.append("}").newLine();
+        return codeBuilder.toString();
     }
 
     public abstract String methodBody();

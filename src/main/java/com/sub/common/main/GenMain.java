@@ -37,19 +37,19 @@ public class GenMain {
 
         Entity dto1 = new Entity();
         dto1.setCode("Product");
-        dto1.setName("²úÆ·");
+        dto1.setName("ï¿½ï¿½Æ·");
         dto1.setPackages(packages);
         List<IAttribute> attrs = new ArrayList<>();
         Attribute attr1 = new Attribute();
         attr1.setCode("code");
-        attr1.setName("±àÂë");
+        attr1.setName("ï¿½ï¿½ï¿½ï¿½");
         attr1.setType(typeString);
         attr1.setVisibility(Modifier.PRIVATE);
         attr1.setParent(dto1);
 
         Attribute attr2 = new Attribute();
         attr2.setCode("name");
-        attr2.setName("Ãû³Æ");
+        attr2.setName("ï¿½ï¿½ï¿½ï¿½");
         attr2.setType(typeString);
         attr2.setVisibility(Modifier.PRIVATE);
         attr2.setParent(dto1);
@@ -63,7 +63,7 @@ public class GenMain {
 
         Attribute attr4 = new Attribute();
         attr4.setCode("price");
-        attr4.setName("¼Û¸ñ");
+        attr4.setName("ï¿½Û¸ï¿½");
         attr4.setType(typeInt);
         attr4.setVisibility(Modifier.PRIVATE);
         attr4.setParent(dto1);

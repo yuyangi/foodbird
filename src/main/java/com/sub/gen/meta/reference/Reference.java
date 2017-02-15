@@ -1,5 +1,6 @@
 package com.sub.gen.meta.reference;
 
+import com.sub.gen.enums.InstanceMode;
 import com.sub.gen.enums.ReferenceType;
 import com.sub.gen.meta.BaseCodeModel;
 import com.sub.gen.meta.IClass;
@@ -15,9 +16,11 @@ public class Reference extends BaseCodeModel implements IReference {
 
     private IClass reference;
 
+    private InstanceMode referenceInstanceMode;
+
     private IMethod method;
 
-    private ReferenceType refType;
+    private ReferenceType referenceType;
 
     @Override
     public IClass getReference() {
@@ -38,12 +41,21 @@ public class Reference extends BaseCodeModel implements IReference {
     }
 
     @Override
-    public ReferenceType getRefType() {
-        return refType;
+    public InstanceMode getReferenceInstanceMode() {
+        return referenceInstanceMode;
     }
 
-    public void setRefType(ReferenceType refType) {
-        this.refType = refType;
+    public void setReferenceInstanceMode(InstanceMode referenceInstanceMode) {
+        this.referenceInstanceMode = referenceInstanceMode;
+    }
+
+    @Override
+    public ReferenceType getReferenceType() {
+        return referenceType;
+    }
+
+    public void setReferenceType(ReferenceType referenceType) {
+        this.referenceType = referenceType;
     }
 
     @Override

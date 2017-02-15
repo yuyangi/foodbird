@@ -6,12 +6,12 @@ import java.lang.Integer;
 public class Product {
 
     /**
-     * 编码
+     * 缂栫爜
      */
     private String code;
 
     /**
-     * 名称
+     * 鍚嶇О
      */
     private String name;
 
@@ -21,33 +21,33 @@ public class Product {
     private Integer id;
 
     /**
-     * 价格
+     * 浠锋牸
      */
     private Integer price;
 
     /**
-     * getter for 编码
+     * getter for 缂栫爜
      */
     public String getCode(){
         return code;
     }
 
     /**
-     * setter for 编码
+     * setter for 缂栫爜
      */
     public void setCode(String code){
         this.code = code;
     }
 
     /**
-     * getter for 名称
+     * getter for 鍚嶇О
      */
     public String getName(){
         return name;
     }
 
     /**
-     * setter for 名称
+     * setter for 鍚嶇О
      */
     public void setName(String name){
         this.name = name;
@@ -68,14 +68,14 @@ public class Product {
     }
 
     /**
-     * getter for 价格
+     * getter for 浠锋牸
      */
     public Integer getPrice(){
         return price;
     }
 
     /**
-     * setter for 价格
+     * setter for 浠锋牸
      */
     public void setPrice(Integer price){
         this.price = price;

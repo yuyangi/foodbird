@@ -17,21 +17,21 @@ public class TestVelocity {
     public static void main(String[] args) {
         VelocityEngine ve = new VelocityEngine();
         ve.init();
-        //È¡µÃvelocityµÄÄ£°æ
+        //å–å¾—velocityçš„æ¨¡ç‰ˆ
         Template t = ve.getTemplate("hellovelocity.vm");
-        //È¡µÃvelocityµÄÉÏÏÂÎÄcontext
+        //å–å¾—velocityçš„ä¸Šä¸‹æ–‡context
         VelocityContext context = new VelocityContext();
-        //°ÑÊı¾İÌîÈëÉÏÏÂÎÄ
+        //æŠŠæ•°æ®å¡«å…¥ä¸Šä¸‹æ–‡
         context.put("name", "Liang");
         context.put("date", (new Date()).toString());
-        //ÎªºóÃæµÄÕ¹Ê¾£¬ÌáÇ°ÊäÈëListÊıÖµ
+        //ä¸ºåé¢çš„å±•ç¤ºï¼Œæå‰è¾“å…¥Listæ•°å€¼
         List<String> temp = new ArrayList<>();
         temp.add("1");
         temp.add("2");
         context.put("list", temp);
-        //Êä³öÁ÷
+        //è¾“å‡ºæµ
         StringWriter writer = new StringWriter();
-        //×ª»»Êä³ö
+        //è½¬æ¢è¾“å‡º
         t.merge(context, writer);
         System.out.println(writer.toString());
     }

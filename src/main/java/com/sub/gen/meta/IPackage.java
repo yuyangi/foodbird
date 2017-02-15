@@ -9,6 +9,8 @@ public interface IPackage {
 
     List<String> getPackages();
 
+    List<IClass> getClasses();
+
     String toString();
 
 }
