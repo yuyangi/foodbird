@@ -3,17 +3,9 @@ package com.sub.gen.enums;
 import com.sub.gen.interfaces.StrategySelective;
 
 /**
- * Created by yy111026 on 2017/2/9.
+ * @author yy111026 on 2017/2/21.
  */
-public enum MetaType implements StrategySelective {
-
-    Attribute,
-    Class,
-    Method,
-    Type,
-    Parameter,
-    Reference,
-    ;
+public abstract class StrategySelectable implements StrategySelective {
 
     @Override
     public String key() {

@@ -13,8 +13,8 @@ import com.sub.gen.meta.IParameter;
  */
 public class DefaultCodeMetaStrategy extends AbstractGenMetaStrategy {
 
-    public DefaultCodeMetaStrategy(MetaType metaType) {
-        super(metaType);
+    public DefaultCodeMetaStrategy() {
+        super();
     }
 
     @Override

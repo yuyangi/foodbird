@@ -3,17 +3,15 @@ package com.sub.gen.strategy.meta;
 import com.sub.gen.enums.MetaType;
 import com.sub.gen.exception.UnsupportedFormException;
 import com.sub.gen.meta.ICodeModel;
+import com.sub.gen.strategy.ICodeGenerateStrategy;
 import com.sub.gen.strategy.IGenMetaStrategy;
 
 /**
  * Created by yy111026 on 2017/2/10.
  */
-public abstract class AbstractGenMetaStrategy implements IGenMetaStrategy {
+public abstract class AbstractGenMetaStrategy implements IGenMetaStrategy, ICodeGenerateStrategy {
 
-    private MetaType metaType;
-
-    public AbstractGenMetaStrategy(MetaType metaType) {
-        this.metaType = metaType;
+    public AbstractGenMetaStrategy() {
     }
 
     @Override
@@ -21,10 +19,14 @@ public abstract class AbstractGenMetaStrategy implements IGenMetaStrategy {
         return model.toCode();
     }
 
-    protected void validate(ICodeModel model) throws UnsupportedFormException {
+    protected void validate(ICodeModel model, MetaType metaType) throws UnsupportedFormException {
         if (model == null || model.getMetaType() != metaType) {
             throw new UnsupportedFormException();
         }
     }
 
+    @Override
+    public String generate(ICodeModel model) {
+        return model.toCode();
+    }
 }

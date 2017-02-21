@@ -5,80 +5,80 @@ import com.sub.gen.ICoder;
 public interface ICodeTemplate extends ICoder {
 
     /**
-     * ÓïÑÔ
+     * è¯­è¨€
      * @return
      */
 	String getLanguage();
 
     /**
-     * ÎÄ¼şÀàĞÍºó×º
+     * æ–‡ä»¶ç±»å‹åç¼€
      * @return
      */
     String suffix();
 
     /**
-     * Ãû³Æ
+     * åç§°
      * @return
      */
     String name();
 
     /**
-     * ±àÂë
+     * ç¼–ç 
      * @return
      */
     String code();
 
     /**
-     * ´´½¨(ÊµÀı»¯)
+     * åˆ›å»º(å®ä¾‹åŒ–)
      * @return
      */
     String create();
 
     /**
-     * Ñ­»·
+     * å¾ªç¯
      * @return
      */
     String loop();
 
     /**
-     * ¸³Öµ
+     * èµ‹å€¼
      * @return
      */
     String assign();
 
     /**
-     * µ÷ÓÃ
+     * è°ƒç”¨
      * @return
      */
     String invoke();
 
     /**
-     * ÔËËã
+     * è¿ç®—
      * @return
      */
     String operation();
 
     /**
-     * ¹ØÏµÔËËã (´óÓÚĞ¡ÓÚµÈÓÚ) µÄÓï·¨¸ñÊ½
+     * å…³ç³»è¿ç®— (å¤§äºå°äºç­‰äº) çš„è¯­æ³•æ ¼å¼
      *
-     * @return ¹ØÏµÔËËãÏà¹Ø´úÂë
+     * @return å…³ç³»è¿ç®—ç›¸å…³ä»£ç 
      */
     String relation();
 
     /**
-     * ¶¨ÒåÉùÃ÷µÄÓï·¨¸ñÊ½
-     * ÉùÃ÷±äÁË,ÉùÃ÷Àà,ÉùÃ÷Êı×éÏà¹Ø´úÂë¸ñÊ½
-     * Éú³É:
+     * å®šä¹‰å£°æ˜çš„è¯­æ³•æ ¼å¼
+     * å£°æ˜å˜äº†,å£°æ˜ç±»,å£°æ˜æ•°ç»„ç›¸å…³ä»£ç æ ¼å¼
+     * ç”Ÿæˆ:
      *      private int a = 0;
      *      public Product product = null;
      *      protect int[] arr;
-     * @return ¶¨ÒåÉùÃ÷Ïà¹Ø´úÂë
+     * @return å®šä¹‰å£°æ˜ç›¸å…³ä»£ç 
      */
     String define();
 
     /**
-     * Á÷³Ì¿ØÖÆÓï¾ä(ifelse switch)
-     * Éú³É ifelse
+     * æµç¨‹æ§åˆ¶è¯­å¥(ifelse switch)
+     * ç”Ÿæˆ ifelse
      *      if (something) {
      *
      *      } else if (something else) {
@@ -86,7 +86,7 @@ public interface ICodeTemplate extends ICoder {
      *      } else {
      *
      *      }
-     * Éú³É switch
+     * ç”Ÿæˆ switch
      *      switch (x) {
      *          case 1:
      *              // todo something
@@ -95,19 +95,19 @@ public interface ICodeTemplate extends ICoder {
      *          default:
      *              break;
      *      }
-     * @return Á÷³Ì¿ØÖÆÏà¹Ø´úÂë
+     * @return æµç¨‹æ§åˆ¶ç›¸å…³ä»£ç 
      */
     String flowControl();
 
-    // ÔËËã·ûÓë±í´ïÊ½
-    //      ËãÊı
-    //      ¸³Öµ
-    //      ×ÔÔö(¼õ)
-    //      ¹ØÏµ(´óÓÚĞ¡ÓÚ)
-    //      Âß¼­ÔËËã·û
-    //      Î»ÔËËã
-    //      ÈıÔªÔËËã
-    // Êı×é
-    // Á÷³Ì¿ØÖÆÓï¾ä(ifelse switch)
-    // Ñ­»·(for while)
+    // è¿ç®—ç¬¦ä¸è¡¨è¾¾å¼
+    //      ç®—æ•°
+    //      èµ‹å€¼
+    //      è‡ªå¢(å‡)
+    //      å…³ç³»(å¤§äºå°äº)
+    //      é€»è¾‘è¿ç®—ç¬¦
+    //      ä½è¿ç®—
+    //      ä¸‰å…ƒè¿ç®—
+    // æ•°ç»„
+    // æµç¨‹æ§åˆ¶è¯­å¥(ifelse switch)
+    // å¾ªç¯(for while)
 }

@@ -14,8 +14,8 @@ import com.sub.gen.tools.NameUtils;
  */
 public class ClassCodeMetaStrategy extends AbstractGenMetaStrategy {
 
-    public ClassCodeMetaStrategy(MetaType metaType) {
-        super(metaType);
+    public ClassCodeMetaStrategy() {
+        super();
     }
 
     @Override

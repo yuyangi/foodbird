@@ -1,18 +1,23 @@
 package com.sub.gen.meta.method;
 
+import com.sub.gen.meta.IReference;
 import org.springframework.stereotype.Component;
 
 import com.sub.gen.enums.MethodType;
 import com.sub.gen.meta.IClass;
 import com.sub.gen.tools.CodeBuilder;
 
+import java.util.List;
+
 /**
- * Created by yuyang on 2016/11/27.
+ * @author yuyang on 2016/11/27.
  */
 @Component("serviceQuery")
 public class SpringServiceQuery extends SpringServiceMethod {
 
     private IClass entity;
+
+    private List<IReference> references;
 
     @Override
     public String getCode() {

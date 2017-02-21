@@ -1,16 +1,20 @@
 package com.sub.gen.tools;
 
+import org.apache.log4j.Logger;
+
 import java.io.*;
 
 /**
- * Created by yy111026 on 2016/12/8.
+ * @author yy111026 on 2016/12/8.
  */
 public class FileUtils {
+
+    private static Logger logger = Logger.getLogger(FileUtils.class);
 
     public static void writeFile(String path, StringBuffer content) {
         try {
             File file = new File(path);
-            if(!file.exists()) {
+            if (!file.exists()) {
                 file.createNewFile();
             }
             FileWriter fw = new FileWriter(file);
@@ -18,14 +22,14 @@ public class FileUtils {
             fw.flush();
             fw.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         }
     }
 
     public static void writeFile(String path, String content) {
         try {
             File file = new File(path);
-            if(!file.exists()) {
+            if (!file.exists()) {
                 file.createNewFile();
             }
             FileWriter fw = new FileWriter(file);
@@ -33,25 +37,23 @@ public class FileUtils {
             fw.flush();
             fw.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         }
     }
 
     public static void writeFile(String path, byte[] content) {
         try {
             File file = new File(path);
-            if(!file.exists()) {
+            if (!file.exists()) {
                 file.createNewFile();
             }
             FileOutputStream in = new FileOutputStream(file);
             in.write(content, 0, content.length);
             in.close();
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         }
     }
 
@@ -61,10 +63,8 @@ public class FileUtils {
             if (!myFolderPath.exists()) {
                 myFolderPath.mkdir();
             }
-        }
-        catch (Exception e) {
-            System.out.println("新建目录操作出错");
-            e.printStackTrace();
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
         }
     }
 
@@ -79,8 +79,7 @@ public class FileUtils {
             myFile.println(path);
             resultFile.close();
         } catch (Exception e) {
-            System.out.println("新建文件操作出错");
-            e.printStackTrace();
+            logger.error(e.getMessage(), e);
         }
     }
 
