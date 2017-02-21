@@ -1,6 +1,6 @@
 package com.sub.gen.strategy.factory;
 
-import com.sub.gen.enums.CodeForm;
+import com.sub.gen.enums.ReferenceForm;
 import com.sub.gen.strategy.IGenFormStrategy;
 
 /**
@@ -8,6 +8,6 @@ import com.sub.gen.strategy.IGenFormStrategy;
  */
 public interface IGenFormStrategyFactory {
 
-    IGenFormStrategy create(CodeForm codeForm);
+    IGenFormStrategy create(ReferenceForm referenceForm);
 
 }

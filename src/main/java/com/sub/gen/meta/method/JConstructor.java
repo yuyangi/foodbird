@@ -1,6 +1,7 @@
 package com.sub.gen.meta.method;
 
 import com.sub.gen.enums.DataType;
+import com.sub.gen.enums.MetaType;
 import com.sub.gen.enums.MethodType;
 import com.sub.gen.meta.IClass;
 import com.sub.gen.meta.IType;
@@ -10,17 +11,17 @@ import com.sub.gen.tools.CodeBuilder;
 /**
  * Created by yy111026 on 2017/2/14.
  */
-public class JConstrutors extends Method {
+public class JConstructor extends Method {
 
     private IType returnType;
 
     private IClass parent;
 
-    public JConstrutors() {
+    public JConstructor() {
         super();
     }
 
-    public JConstrutors(IClass iClass) {
+    public JConstructor(IClass iClass) {
         super();
         setParent(iClass);
         this.parent = iClass;
@@ -52,6 +53,11 @@ public class JConstrutors extends Method {
     @Override
     public MethodType getMethodType() {
         return MethodType.Constructor;
+    }
+
+    @Override
+    public MetaType getMetaType() {
+        return MetaType.Method;
     }
 
     public String toCode() {

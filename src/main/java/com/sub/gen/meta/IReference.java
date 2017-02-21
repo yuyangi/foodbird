@@ -1,6 +1,7 @@
 package com.sub.gen.meta;
 
 import com.sub.gen.ICoder;
+import com.sub.gen.enums.ReferenceForm;
 import com.sub.gen.enums.InstanceMode;
 import com.sub.gen.enums.ReferenceType;
 
@@ -16,5 +17,7 @@ public interface IReference extends ICoder {
     IMethod getMethod();
 
     ReferenceType getReferenceType();
+
+    ReferenceForm getReferenceForm();
 
 }

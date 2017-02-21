@@ -2,6 +2,7 @@ package com.sub.gen.meta.classes;
 
 import java.util.List;
 
+import com.sub.gen.enums.MetaType;
 import com.sub.gen.meta.BaseCodeModel;
 import com.sub.gen.meta.IAttribute;
 import com.sub.gen.meta.IClass;
@@ -75,6 +76,16 @@ public class ClassAdapter extends BaseCodeModel implements JClass {
     @Override
     public String getCode() {
         return clz.getName().substring(lastIndexOfDot + 1, fullNameLength);
+    }
+
+    @Override
+    public String getQualifiedName() {
+        return clz.getName();
+    }
+
+    @Override
+    public MetaType getMetaType() {
+        return MetaType.Class;
     }
 
     @Override

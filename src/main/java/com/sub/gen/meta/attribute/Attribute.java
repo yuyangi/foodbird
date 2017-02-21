@@ -1,5 +1,6 @@
 package com.sub.gen.meta.attribute;
 
+import com.sub.gen.enums.MetaType;
 import com.sub.gen.meta.BaseCodeModel;
 import com.sub.gen.meta.IAttribute;
 import com.sub.gen.meta.IType;
@@ -7,7 +8,7 @@ import com.sub.gen.tools.CodeBuilder;
 import com.sub.gen.tools.NameUtils;
 
 /**
- * Created by yy111026 on 2017/2/6.
+ * @author yy111026 on 2017/2/6.
  */
 public class Attribute extends BaseCodeModel implements IAttribute {
 
@@ -32,4 +33,8 @@ public class Attribute extends BaseCodeModel implements IAttribute {
         return codes.toString();
     }
 
+    @Override
+    public MetaType getMetaType() {
+        return MetaType.Attribute;
+    }
 }

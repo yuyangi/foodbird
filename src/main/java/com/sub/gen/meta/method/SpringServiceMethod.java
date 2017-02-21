@@ -2,6 +2,8 @@ package com.sub.gen.meta.method;
 
 import com.sub.gen.constants.Constants;
 import com.sub.gen.enums.DataType;
+import com.sub.gen.enums.MetaType;
+import com.sub.gen.enums.MethodType;
 import com.sub.gen.tools.CodeBuilder;
 import com.sub.gen.tools.CollectionUtils;
 import com.sub.gen.meta.*;
@@ -64,6 +66,16 @@ public abstract class SpringServiceMethod extends BaseCodeModel implements IMeth
             return paramBuilder.toString();
         }
         return null;
+    }
+
+    @Override
+    public MethodType getMethodType() {
+        return MethodType.Normal;
+    }
+
+    @Override
+    public MetaType getMetaType() {
+        return MetaType.Method;
     }
 
     @Override

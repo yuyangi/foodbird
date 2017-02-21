@@ -1,5 +1,6 @@
 package com.sub.gen.meta.packages;
 
+import com.sub.gen.meta.IClass;
 import com.sub.gen.meta.IPackage;
 
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ import java.util.List;
 public class Package implements IPackage {
 
     private List<String> packages;
+
+    private List<IClass> classes;
 
     public Package() {
 
@@ -36,4 +39,12 @@ public class Package implements IPackage {
         return String.join(".", packages);
     }
 
+    public void setClasses(List<IClass> classes) {
+        this.classes = classes;
+    }
+
+    @Override
+    public List<IClass> getClasses() {
+        return classes;
+    }
 }

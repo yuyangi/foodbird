@@ -1,6 +1,7 @@
 package com.sub.gen.meta.method;
 
 import com.sub.gen.constants.Constants;
+import com.sub.gen.enums.MetaType;
 import com.sub.gen.enums.MethodType;
 import com.sub.gen.enums.Modifier;
 import com.sub.gen.meta.*;
@@ -85,5 +86,10 @@ public class Getter extends BaseCodeModel implements IMethod, Constants {
     @Override
     public List<IClass> getImports() {
         return null;
+    }
+
+    @Override
+    public MetaType getMetaType() {
+        return MetaType.Method;
     }
 }

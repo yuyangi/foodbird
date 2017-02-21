@@ -2,11 +2,11 @@ package com.sub.gen.strategy.factory;
 
 import com.sub.gen.enums.MetaType;
 import com.sub.gen.strategy.IGenMetaStrategy;
-import com.sub.gen.strategy.elem.AttributeCodeMetaStrategy;
-import com.sub.gen.strategy.elem.ClassCodeMetaStrategy;
-import com.sub.gen.strategy.elem.DefaultCodeMetaStrategy;
-import com.sub.gen.strategy.elem.MethodCodeMetaStrategy;
-import com.sub.gen.strategy.elem.ReferenceCodeMetaStrategy;
+import com.sub.gen.strategy.meta.AttributeCodeMetaStrategy;
+import com.sub.gen.strategy.meta.ClassCodeMetaStrategy;
+import com.sub.gen.strategy.meta.DefaultCodeMetaStrategy;
+import com.sub.gen.strategy.meta.MethodCodeMetaStrategy;
+import com.sub.gen.strategy.meta.ReferenceCodeMetaStrategy;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

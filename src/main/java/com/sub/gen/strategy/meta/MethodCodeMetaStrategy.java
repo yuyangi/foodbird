@@ -1,8 +1,9 @@
-package com.sub.gen.strategy.elem;
+package com.sub.gen.strategy.meta;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sub.gen.enums.MetaType;
 import com.sub.gen.exception.UnsupportedFormException;
 import com.sub.gen.meta.ICodeModel;
 import com.sub.gen.meta.IMethod;
@@ -16,7 +17,8 @@ import com.sub.gen.tools.NameUtils;
  */
 public class MethodCodeMetaStrategy extends AbstractGenMetaStrategy {
 
-    public MethodCodeMetaStrategy() {
+    public MethodCodeMetaStrategy(MetaType metaType) {
+        super(metaType);
     }
 
     @Override

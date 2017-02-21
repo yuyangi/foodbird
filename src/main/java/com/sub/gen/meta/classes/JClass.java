@@ -6,7 +6,7 @@ import com.sub.gen.meta.IMethod;
 import java.util.List;
 
 /**
- * Created by yy111026 on 2017/2/14.
+ * @author yy111026 on 2017/2/14.
  */
 public interface JClass extends IClass {
 

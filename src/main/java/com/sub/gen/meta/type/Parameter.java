@@ -1,5 +1,6 @@
 package com.sub.gen.meta.type;
 
+import com.sub.gen.enums.MetaType;
 import com.sub.gen.meta.BaseCodeModel;
 import com.sub.gen.meta.IParameter;
 import com.sub.gen.meta.IType;
@@ -18,6 +19,11 @@ public class Parameter extends BaseCodeModel implements IParameter {
 
     public void setType(IType type) {
         this.type = type;
+    }
+
+    @Override
+    public MetaType getMetaType() {
+        return MetaType.Parameter;
     }
 
     @Override

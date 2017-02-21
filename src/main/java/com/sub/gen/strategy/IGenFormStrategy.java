@@ -1,5 +1,6 @@
 package com.sub.gen.strategy;
 
+import com.sub.gen.exception.UnsupportedFormException;
 import com.sub.gen.meta.ICodeModel;
 
 /**
@@ -7,6 +8,6 @@ import com.sub.gen.meta.ICodeModel;
  */
 public interface IGenFormStrategy {
 
-    String generate(ICodeModel model);
+    String generate(ICodeModel model) throws UnsupportedFormException;
 
 }

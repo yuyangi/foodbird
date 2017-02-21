@@ -15,10 +15,4 @@ public class SpringServiceInsert extends SpringServiceMethod {
         return null;
     }
 
-	@Override
-	public MethodType getMethodType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

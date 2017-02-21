@@ -30,10 +30,4 @@ public class SpringServiceQuery extends SpringServiceMethod {
         return codeBuilder.toString();
     }
 
-	@Override
-	public MethodType getMethodType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

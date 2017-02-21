@@ -12,4 +12,6 @@ public interface IClass extends ICodeModel {
 
 	List<IClass> getGenerics();
 
+	String getQualifiedName();
+
 }

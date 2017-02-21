@@ -2,6 +2,7 @@ package com.sub.gen.meta.method;
 
 import com.sub.gen.constants.Constants;
 import com.sub.gen.enums.DataType;
+import com.sub.gen.enums.MetaType;
 import com.sub.gen.enums.MethodType;
 import com.sub.gen.meta.*;
 import com.sub.gen.tools.CodeBuilder;
@@ -25,6 +26,8 @@ public abstract class Method extends BaseCodeModel implements IMethod, Constants
     private List<IClass> imports;
 
     private List<IClass> references;
+
+    private MethodType methodType;
 
     @Override
     public IParameter[] getParameters() {
@@ -98,6 +101,16 @@ public abstract class Method extends BaseCodeModel implements IMethod, Constants
 
     public void setReferences(List<IClass> references) {
         this.references = references;
+    }
+
+    @Override
+    public MethodType getMethodType() {
+        return MethodType.Normal;
+    }
+
+    @Override
+    public MetaType getMetaType() {
+        return MetaType.Method;
     }
 
     @Override

@@ -1,12 +1,16 @@
 package com.sub.gen.meta.classes;
 
 import com.sub.gen.constants.Constants;
+import com.sub.gen.enums.DataType;
+import com.sub.gen.enums.MetaType;
 import com.sub.gen.meta.BaseCodeModel;
 import com.sub.gen.meta.IAttribute;
 import com.sub.gen.meta.IClass;
 import com.sub.gen.meta.IMethod;
 import com.sub.gen.meta.method.Getter;
+import com.sub.gen.meta.method.JConstructor;
 import com.sub.gen.meta.method.Setter;
+import com.sub.gen.meta.type.Type;
 import com.sub.gen.tools.CodeBuilder;
 
 import java.util.ArrayList;
@@ -14,13 +18,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Entity extends BaseCodeModel implements IClass {
+public class Entity extends BaseCodeModel implements JClass {
 
     private List<IAttribute> attributes;
 
     private List<IMethod> methods;
 
     private List<IClass> generics;
+
+    private List<IMethod> constructors;
 
     public List<IAttribute> getAttributes() {
         return attributes;
@@ -44,6 +50,21 @@ public class Entity extends BaseCodeModel implements IClass {
         return methods;
     }
 
+    @Override
+    public List<IMethod> getConstructors() {
+        if (constructors == null) {
+            constructors = new ArrayList<>();
+            JConstructor constructor = new JConstructor();
+            constructor.setParent(this);
+            Type returnType = new Type();
+            returnType.setType(DataType.CLASS);
+            returnType.setClassType(this);
+            constructor.setReturnType(returnType);
+            constructors.add(constructor);
+        }
+        return constructors;
+    }
+
     public void setMethods(List<IMethod> methods) {
         this.methods = methods;
     }
@@ -55,6 +76,16 @@ public class Entity extends BaseCodeModel implements IClass {
 
     public void setGenerics(List<IClass> generics) {
         this.generics = generics;
+    }
+
+    @Override
+    public String getQualifiedName() {
+        return getPackages() + "." + getName();
+    }
+
+    @Override
+    public MetaType getMetaType() {
+        return MetaType.Class;
     }
 
     @Override

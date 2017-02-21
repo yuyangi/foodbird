@@ -1,5 +1,6 @@
-package com.sub.gen.strategy.elem;
+package com.sub.gen.strategy.meta;
 
+import com.sub.gen.enums.MetaType;
 import com.sub.gen.exception.UnsupportedFormException;
 import com.sub.gen.meta.ICodeModel;
 import com.sub.gen.meta.IParameter;
@@ -12,8 +13,8 @@ import com.sub.gen.meta.IParameter;
  */
 public class DefaultCodeMetaStrategy extends AbstractGenMetaStrategy {
 
-    public DefaultCodeMetaStrategy() {
-
+    public DefaultCodeMetaStrategy(MetaType metaType) {
+        super(metaType);
     }
 
     @Override

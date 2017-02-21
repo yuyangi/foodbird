@@ -37,7 +37,7 @@ public class CodeBuilder {
     }
 
     public CodeBuilder addPackage(String packages) {
-        codeBuilder.append(indent).append("packages ").append(packages);
+        codeBuilder.append(indent).append("package ").append(packages);
         return this;
     }
 

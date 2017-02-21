@@ -1,6 +1,7 @@
 package com.sub.gen.meta.method;
 
 import com.sub.gen.constants.Constants;
+import com.sub.gen.enums.MetaType;
 import com.sub.gen.enums.MethodType;
 import com.sub.gen.enums.Modifier;
 import com.sub.gen.tools.CodeBuilder;
@@ -47,6 +48,11 @@ public class Setter extends BaseCodeModel implements IMethod, Constants {
     @Override
     public Modifier getModifier() {
         return null;
+    }
+
+    @Override
+    public MetaType getMetaType() {
+        return MetaType.Method;
     }
 
     @Override

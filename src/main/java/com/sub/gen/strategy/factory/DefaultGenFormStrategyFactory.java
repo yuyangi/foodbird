@@ -1,6 +1,6 @@
 package com.sub.gen.strategy.factory;
 
-import com.sub.gen.enums.CodeForm;
+import com.sub.gen.enums.ReferenceForm;
 import com.sub.gen.strategy.IGenFormStrategy;
 import com.sub.gen.strategy.form.DefaultFormStrategy;
 import com.sub.gen.strategy.form.DefineFormStrategy;
@@ -17,14 +17,14 @@ public class DefaultGenFormStrategyFactory implements IGenFormStrategyFactory {
 
     private static DefaultGenFormStrategyFactory instance = new DefaultGenFormStrategyFactory();
 
-    private static Map<CodeForm, IGenFormStrategy> cache = new ConcurrentHashMap<>();
+    private static Map<ReferenceForm, IGenFormStrategy> cache = new ConcurrentHashMap<>();
 
     static {
-        cache.put(CodeForm.Define, new DefineFormStrategy());
-        cache.put(CodeForm.Invoke, new InvokeFormStrategy());
-        cache.put(CodeForm.Variable, new VariableFormStrategy());
-        cache.put(CodeForm.Param, new DefaultFormStrategy());
-        cache.put(CodeForm.State, new DefaultFormStrategy());
+        cache.put(ReferenceForm.Define, new DefineFormStrategy());
+        cache.put(ReferenceForm.Invoke, new InvokeFormStrategy());
+        cache.put(ReferenceForm.Variable, new VariableFormStrategy());
+        cache.put(ReferenceForm.Param, new DefaultFormStrategy());
+        cache.put(ReferenceForm.State, new DefaultFormStrategy());
     }
 
     private DefaultGenFormStrategyFactory() {
@@ -36,7 +36,7 @@ public class DefaultGenFormStrategyFactory implements IGenFormStrategyFactory {
     }
 
     @Override
-    public IGenFormStrategy create(CodeForm codeForm) {
-        return cache.get(codeForm);
+    public IGenFormStrategy create(ReferenceForm referenceForm) {
+        return cache.get(referenceForm);
     }
 }

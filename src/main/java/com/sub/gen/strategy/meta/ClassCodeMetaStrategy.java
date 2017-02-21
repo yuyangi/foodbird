@@ -1,8 +1,9 @@
-package com.sub.gen.strategy.elem;
+package com.sub.gen.strategy.meta;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sub.gen.enums.MetaType;
 import com.sub.gen.meta.ICodeModel;
 import com.sub.gen.meta.IParameter;
 import com.sub.gen.tools.CodeBuilder;
@@ -13,7 +14,8 @@ import com.sub.gen.tools.NameUtils;
  */
 public class ClassCodeMetaStrategy extends AbstractGenMetaStrategy {
 
-    public ClassCodeMetaStrategy() {
+    public ClassCodeMetaStrategy(MetaType metaType) {
+        super(metaType);
     }
 
     @Override
