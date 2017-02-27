@@ -14,4 +14,8 @@ public interface IClass extends ICodeModel {
 
 	String getQualifiedName();
 
+	void setVarName(String varName);
+
+	String getVarName();
+
 }

@@ -29,7 +29,7 @@ public class Attribute extends BaseCodeModel implements IAttribute {
         codes.append(indent()).append("/**").newLine();
         codes.append(indent()).append(" * " + getName()).newLine();
         codes.append(indent()).append(" */").newLine();
-        codes.append(indent()).append(getVisibility().toString() + " ").append(getType().getClassType().getCode()).append(" ").append(NameUtils.getVarName(getCode())).end().newLine();
+        codes.append(indent()).append(getVisibility().toString() + " ").append(getType().getType().getCode()).append(" ").append(NameUtils.getVarName(getCode())).end().newLine();
         return codes.toString();
     }
 

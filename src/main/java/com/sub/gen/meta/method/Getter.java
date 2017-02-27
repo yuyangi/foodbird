@@ -56,7 +56,7 @@ public class Getter extends BaseCodeModel implements IMethod, Constants {
         codes.append(indent()).append("/**").newLine();
         codes.append(indent()).append(" * getter for " + attribute.getName()).newLine();
         codes.append(indent()).append(" */").newLine();
-        codes.append(indent()).append("public " + getReturnType().getClassType().getCode() + " " + getter() + "(){").newLine();
+        codes.append(indent()).append("public " + getReturnType().getType().getCode() + " " + getter() + "(){").newLine();
         codes.append(indent()).append(INDENT + "return " + attribute.getCode() + ";").newLine();
         codes.append(indent()).append("}").newLine();
         return codes.toString();

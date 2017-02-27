@@ -28,10 +28,8 @@ public class GenMain {
         IClass ClassInt = new ClassAdapter(Integer.class);
         Type typeString = new Type();
         Type typeInt = new Type();
-        typeString.setType(DataType.CLASS);
-        typeString.setClassType(ClassString);
-        typeInt.setType(DataType.CLASS);
-        typeInt.setClassType(ClassInt);
+        typeString.setType(ClassString);
+        typeInt.setType(ClassString);
 
         IPackage packages = new Package("com.sub.test.business");
 

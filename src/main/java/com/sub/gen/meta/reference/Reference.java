@@ -4,10 +4,7 @@ import com.sub.gen.enums.InstanceMode;
 import com.sub.gen.enums.MetaType;
 import com.sub.gen.enums.ReferenceForm;
 import com.sub.gen.enums.ReferenceType;
-import com.sub.gen.meta.BaseCodeModel;
-import com.sub.gen.meta.IClass;
-import com.sub.gen.meta.IMethod;
-import com.sub.gen.meta.IReference;
+import com.sub.gen.meta.*;
 import com.sub.gen.strategy.ICodeGenerateStrategy;
 import com.sub.gen.strategy.factory.DefaultCodeGenerateStrategyFactory;
 import com.sub.gen.strategy.factory.ICodeGenerateStrategyFactory;
@@ -15,6 +12,7 @@ import com.sub.gen.strategy.form.DefaultFormStrategy;
 import com.sub.gen.tools.CodeBuilder;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yy111026
@@ -32,9 +30,13 @@ public class Reference extends BaseCodeModel implements IReference {
 
     private ReferenceForm referenceForm;
 
+    private Map<String, ICodeModel> parameterBindings;
+
     private List<IReference> dependencies;
 
     private ICodeGenerateStrategyFactory factory = DefaultCodeGenerateStrategyFactory.getInstance();
+
+    private String returnName;
 
     @Override
     public IClass getReference() {
@@ -93,6 +95,16 @@ public class Reference extends BaseCodeModel implements IReference {
 
     public void setDependencies(List<IReference> dependencies) {
         this.dependencies = dependencies;
+    }
+
+    @Override
+    public String getReturnName() {
+        return returnName;
+    }
+
+    @Override
+    public void setReturnName(String returnName) {
+        this.returnName = returnName;
     }
 
     private ICodeGenerateStrategy getStrategy() {

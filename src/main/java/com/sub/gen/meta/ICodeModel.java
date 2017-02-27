@@ -23,4 +23,6 @@ public interface ICodeModel extends ICoder {
 	String getComment();
 
 	MetaType getMetaType();
+
+    boolean equals(Object other);
 }

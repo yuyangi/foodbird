@@ -3,6 +3,7 @@ package com.sub.gen.tools;
 import com.sub.gen.constants.Constants;
 import com.sub.gen.enums.Modifier;
 import com.sub.gen.meta.ICodeModel;
+import com.sub.gen.meta.IMethod;
 
 /**
  * Created by yy111026 on 2017/2/6.
@@ -68,6 +69,11 @@ public class CodeBuilder {
 
     public CodeBuilder modifier(String modifier) {
         codeBuilder.append(indent).append(modifier + " ");
+        return this;
+    }
+
+    public CodeBuilder invoke() {
+        codeBuilder.append(".");
         return this;
     }
 

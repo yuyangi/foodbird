@@ -11,6 +11,7 @@ import com.sub.gen.meta.IMethod;
 import com.sub.gen.meta.IPackage;
 import com.sub.gen.meta.packages.Package;
 import com.sub.gen.tools.CodeBuilder;
+import com.sub.gen.tools.NameUtils;
 
 /**
  * 用作类型使用
@@ -24,6 +25,8 @@ public class ClassAdapter extends BaseCodeModel implements JClass {
     private int lastIndexOfDot = 0;
 
     private int fullNameLength = 0;
+
+    private String varName;
 
     public ClassAdapter(Class<?> clz, ICodeModel parent) {
         this(clz);
@@ -86,6 +89,16 @@ public class ClassAdapter extends BaseCodeModel implements JClass {
     @Override
     public MetaType getMetaType() {
         return MetaType.Class;
+    }
+
+    @Override
+    public String getVarName() {
+        return varName;
+    }
+
+    @Override
+    public void setVarName(String varName) {
+        this.varName = varName;
     }
 
     @Override

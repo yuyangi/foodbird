@@ -46,11 +46,7 @@ public abstract class SpringServiceMethod extends BaseCodeModel implements IMeth
 
     protected String getReturn() {
         if(returnType != null) {
-            if(Arrays.asList(DataType.Basics).contains(returnType.getType())) {
-                return returnType.getType().name().toLowerCase();
-            } else if(Arrays.asList(DataType.Objects).contains(returnType.getType())) {
-                return returnType.getClassType() != null ? returnType.getClassType().getCode() : returnType.getClassType().getCode();
-            }
+            return returnType.getType() != null ? returnType.getType().getCode() : returnType.getType().getCode();
         }
         return "void";
     }
@@ -60,7 +56,7 @@ public abstract class SpringServiceMethod extends BaseCodeModel implements IMeth
             CodeBuilder paramBuilder = new CodeBuilder();
             List<String> paramDef = new ArrayList<>();
             for (IParameter param : getParameters()) {
-                paramDef.add(param.getType().getClassType().getCode() + " " + param.getCode());
+                paramDef.add(param.getType().getType().getCode() + " " + param.getCode());
             }
             paramBuilder.append(String.join(", ", paramDef));
             return paramBuilder.toString();

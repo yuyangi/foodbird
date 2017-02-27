@@ -3,7 +3,6 @@ package com.sub.gen.strategy.meta;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sub.gen.enums.MetaType;
 import com.sub.gen.exception.UnsupportedFormException;
 import com.sub.gen.meta.ICodeModel;
 import com.sub.gen.meta.IMethod;
@@ -45,7 +44,7 @@ public class MethodCodeMetaStrategy extends AbstractGenMetaStrategy {
         if (parameters != null && parameters.length > 0) {
             List<String> paramList = new ArrayList<>(parameters.length);
             for (IParameter parameter : parameters) {
-                paramList.add(parameter.getType().getClassType().getCode() + " " + parameter.getCode());
+                paramList.add(parameter.getType().getType().getCode() + " " + parameter.getCode());
             }
             parameterString = String.join(", " + paramList);
         }

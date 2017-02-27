@@ -11,26 +11,15 @@ import com.sub.gen.meta.IType;
  */
 public class Type extends BaseCodeModel implements IType {
 
-    private DataType type;
-
-    private IClass classType;
+    private IClass type;
 
     @Override
-    public DataType getType() {
+    public IClass getType() {
         return type;
     }
 
-    public void setType(DataType type) {
+    public void setType(IClass type) {
         this.type = type;
-    }
-
-    @Override
-    public IClass getClassType() {
-        return classType;
-    }
-
-    public void setClassType(IClass classType) {
-        this.classType = classType;
     }
 
     @Override
@@ -42,4 +31,20 @@ public class Type extends BaseCodeModel implements IType {
     public MetaType getMetaType() {
         return MetaType.Type;
     }
+
+    public boolean equals(Object other) {
+        if (!(other instanceof Type)) {
+            return false;
+        }
+        Type otherType = (Type)other;
+        if (getType() != otherType.getType()) {
+            return false;
+        }
+        if (getType().getCode().equals(otherType.getCode()) &&
+                getType().getPackages().toString().equals(otherType.getType().getPackages().toString())) {
+            return true;
+        }
+        return false;
+    }
+
 }

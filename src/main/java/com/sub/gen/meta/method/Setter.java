@@ -61,7 +61,7 @@ public class Setter extends BaseCodeModel implements IMethod, Constants {
         codes.append(indent()).append("/**").newLine();
         codes.append(indent()).append(" * setter for " + attribute.getName()).newLine();
         codes.append(indent()).append(" */").newLine();
-        codes.append(indent()).append("public void " + setter() + "("+getReturnType().getClassType().getCode() + " " + attribute.getCode()+"){").newLine();
+        codes.append(indent()).append("public void " + setter() + "("+getReturnType().getType().getCode() + " " + attribute.getCode()+"){").newLine();
         codes.append(indent()).append(INDENT + "this." + attribute.getCode() + " = " + attribute.getCode() + ";").newLine();
         codes.append(indent()).append("}").newLine();
         return codes.toString();

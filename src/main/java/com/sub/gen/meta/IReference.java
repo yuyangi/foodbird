@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface IReference extends ICodeModel {
 
-    ICodeModel getReference();
+    IClass getReference();
 
     InstanceMode getReferenceInstanceMode();
 
@@ -23,5 +23,9 @@ public interface IReference extends ICodeModel {
     ReferenceForm getReferenceForm();
 
     List<IReference> getDependencies();
+
+    String getReturnName();
+
+    void setReturnName(String returnName);
 
 }

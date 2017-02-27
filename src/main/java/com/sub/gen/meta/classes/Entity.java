@@ -3,22 +3,20 @@ package com.sub.gen.meta.classes;
 import com.sub.gen.constants.Constants;
 import com.sub.gen.enums.DataType;
 import com.sub.gen.enums.MetaType;
-import com.sub.gen.meta.BaseCodeModel;
-import com.sub.gen.meta.IAttribute;
-import com.sub.gen.meta.IClass;
-import com.sub.gen.meta.IMethod;
+import com.sub.gen.meta.*;
 import com.sub.gen.meta.method.Getter;
 import com.sub.gen.meta.method.JConstructor;
 import com.sub.gen.meta.method.Setter;
 import com.sub.gen.meta.type.Type;
 import com.sub.gen.tools.CodeBuilder;
+import com.sub.gen.tools.NameUtils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Entity extends BaseCodeModel implements JClass {
+public class Entity extends BaseCodeModel implements JClass, IType {
 
     private List<IAttribute> attributes;
 
@@ -27,6 +25,8 @@ public class Entity extends BaseCodeModel implements JClass {
     private List<IClass> generics;
 
     private List<IMethod> constructors;
+
+    private String varName;
 
     public List<IAttribute> getAttributes() {
         return attributes;
@@ -57,8 +57,7 @@ public class Entity extends BaseCodeModel implements JClass {
             JConstructor constructor = new JConstructor();
             constructor.setParent(this);
             Type returnType = new Type();
-            returnType.setType(DataType.CLASS);
-            returnType.setClassType(this);
+            returnType.setType(this);
             constructor.setReturnType(returnType);
             constructors.add(constructor);
         }
@@ -89,6 +88,24 @@ public class Entity extends BaseCodeModel implements JClass {
     }
 
     @Override
+    public String getVarName() {
+        if (varName == null) {
+            varName = NameUtils.getVarName(getCode());
+        }
+        return varName;
+    }
+
+    @Override
+    public void setVarName(String varName) {
+        this.varName = varName;
+    }
+
+    @Override
+    public IClass getType() {
+        return this;
+    }
+
+    @Override
     public String toCode() {
         CodeBuilder codes = new CodeBuilder();
         // packages line
@@ -99,8 +116,8 @@ public class Entity extends BaseCodeModel implements JClass {
         boolean hasAttribute = attributes != null;
         if (hasAttribute) {
             hasAttribute = true;
-            attributes.stream().filter(attr -> attr.getType().getClassType() != null).forEach(
-                    attr -> imports.add(attr.getType().getClassType().getPackages().toString() + "." + attr.getType().getClassType().getCode()));
+            attributes.stream().filter(attr -> attr.getType().getType() != null).forEach(
+                    attr -> imports.add(attr.getType().getType().getPackages().toString() + "." + attr.getType().getType().getCode()));
         }
         imports.forEach(imp -> codes.addImport(imp).end().newLine());
         // class body

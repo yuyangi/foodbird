@@ -36,8 +36,7 @@ public class JConstructor extends Method {
     public IType getReturnType() {
         if (returnType == null) {
             returnType = new Type();
-            ((Type)returnType).setType(DataType.CLASS);
-            ((Type)returnType).setClassType(getParent());
+            ((Type)returnType).setType(getParent());
         }
         return returnType;
     }
