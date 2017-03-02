@@ -16,7 +16,7 @@ public enum ReferenceForm implements StrategySelective {
     Param,
     /* 调用态 */
     Invoke,
-    /* 调用态 */
+    /* 变量态 */
     Variable;
 
     @Override

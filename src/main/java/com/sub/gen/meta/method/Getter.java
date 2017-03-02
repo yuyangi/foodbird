@@ -20,6 +20,8 @@ public class Getter extends BaseCodeModel implements IMethod, Constants {
 
     private MethodType methodType;
 
+    private List<IReference> references;
+
     public Getter() {
 
     }
@@ -48,6 +50,15 @@ public class Getter extends BaseCodeModel implements IMethod, Constants {
     @Override
     public Modifier getModifier() {
         return null;
+    }
+
+    @Override
+    public List<IReference> getReferences() {
+        return references;
+    }
+
+    public void setReferences(List<IReference> references) {
+        this.references = references;
     }
 
     @Override

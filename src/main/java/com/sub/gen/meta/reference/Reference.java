@@ -32,8 +32,6 @@ public class Reference extends BaseCodeModel implements IReference {
 
     private Map<String, ICodeModel> parameterBindings;
 
-    private List<IReference> dependencies;
-
     private ICodeGenerateStrategyFactory factory = DefaultCodeGenerateStrategyFactory.getInstance();
 
     private String returnName;
@@ -86,15 +84,6 @@ public class Reference extends BaseCodeModel implements IReference {
 
     public void setReferenceForm(ReferenceForm referenceForm) {
         this.referenceForm = referenceForm;
-    }
-
-    @Override
-    public List<IReference> getDependencies() {
-        return dependencies;
-    }
-
-    public void setDependencies(List<IReference> dependencies) {
-        this.dependencies = dependencies;
     }
 
     @Override

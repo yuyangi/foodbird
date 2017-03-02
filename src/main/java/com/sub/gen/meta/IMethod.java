@@ -14,4 +14,6 @@ public interface IMethod extends ICodeModel {
 
     MethodType getMethodType();
 
+    List<IReference> getReferences();
+
 }

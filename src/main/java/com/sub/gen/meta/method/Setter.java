@@ -20,6 +20,8 @@ public class Setter extends BaseCodeModel implements IMethod, Constants {
 
     private MethodType methodType;
 
+    private List<IReference> references;
+
     public Setter() {
 
     }
@@ -53,6 +55,15 @@ public class Setter extends BaseCodeModel implements IMethod, Constants {
     @Override
     public MetaType getMetaType() {
         return MetaType.Method;
+    }
+
+    @Override
+    public List<IReference> getReferences() {
+        return references;
+    }
+
+    public void setReferences(List<IReference> references) {
+        this.references = references;
     }
 
     @Override

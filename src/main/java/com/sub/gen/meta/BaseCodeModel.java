@@ -5,6 +5,7 @@ import com.sub.gen.enums.Modifier;
 
 public abstract class BaseCodeModel implements ICodeModel {
 
+    private String id;
     private String name;
     private String code;
     private IPackage packages;
@@ -92,6 +93,29 @@ public abstract class BaseCodeModel implements ICodeModel {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public String id() {
+        return getId();
+    }
+
+    @Override
+    public String code() {
+        return getCode();
+    }
+
+    @Override
+    public String name() {
+        return getName();
     }
 
     public String indent() {

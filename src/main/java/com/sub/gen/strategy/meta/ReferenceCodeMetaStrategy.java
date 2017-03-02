@@ -45,7 +45,7 @@ public class ReferenceCodeMetaStrategy extends AbstractGenMetaStrategy {
         IReference reference = (IReference)model;
         CodeBuilder code = new CodeBuilder();
 
-        List<IReference> dependencies = reference.getDependencies();
+        List<IReference> dependencies = reference.getMethod().getReferences();
         Map<IType, IReference> dependResult = new HashMap<>();
         if(dependencies != null && dependencies.size() > 0) {
             dependencies.forEach(d -> {

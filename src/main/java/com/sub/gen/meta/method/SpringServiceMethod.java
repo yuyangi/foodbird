@@ -25,7 +25,7 @@ public abstract class SpringServiceMethod extends BaseCodeModel implements IMeth
 
     private List<IClass> imports;
 
-    private List<IClass> references;
+    private List<IReference> references;
 
     @Override
     public IParameter[] getParameters() {
@@ -99,11 +99,11 @@ public abstract class SpringServiceMethod extends BaseCodeModel implements IMeth
         this.imports = imports;
     }
 
-    public List<IClass> getReferences() {
+    public List<IReference> getReferences() {
         return references;
     }
 
-    public void setReferences(List<IClass> references) {
+    public void setReferences(List<IReference> references) {
         this.references = references;
     }
 }

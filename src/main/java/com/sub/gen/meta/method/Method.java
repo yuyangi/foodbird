@@ -25,9 +25,9 @@ public abstract class Method extends BaseCodeModel implements IMethod, Constants
 
     private List<IClass> imports;
 
-    private List<IClass> references;
-
     private MethodType methodType;
+
+    private List<IReference> references;
 
     @Override
     public IParameter[] getParameters() {
@@ -91,11 +91,11 @@ public abstract class Method extends BaseCodeModel implements IMethod, Constants
         this.imports = imports;
     }
 
-    public List<IClass> getReferences() {
+    public List<IReference> getReferences() {
         return references;
     }
 
-    public void setReferences(List<IClass> references) {
+    public void setReferences(List<IReference> references) {
         this.references = references;
     }
 
