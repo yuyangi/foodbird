@@ -1,9 +1,8 @@
 package com.sub.gen.strategy.meta;
 
-import com.sub.gen.enums.MetaType;
 import com.sub.gen.exception.UnsupportedFormException;
-import com.sub.gen.meta.ICodeModel;
-import com.sub.gen.meta.IParameter;
+import com.sub.gen.codes.ICodeModel;
+import com.sub.gen.codes.IParameter;
 import com.sub.gen.tools.CodeBuilder;
 import com.sub.gen.tools.NameUtils;
 

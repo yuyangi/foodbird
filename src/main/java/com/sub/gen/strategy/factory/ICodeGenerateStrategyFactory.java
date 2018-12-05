@@ -1,6 +1,6 @@
 package com.sub.gen.strategy.factory;
 
-import com.sub.gen.interfaces.StrategySelective;
+import com.sub.gen.codes.StrategySelective;
 import com.sub.gen.strategy.ICodeGenerateStrategy;
 
 /**

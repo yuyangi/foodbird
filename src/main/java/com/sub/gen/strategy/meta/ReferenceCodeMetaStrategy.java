@@ -1,10 +1,10 @@
 package com.sub.gen.strategy.meta;
 
+import com.sub.gen.codes.*;
 import com.sub.gen.enums.DataType;
 import com.sub.gen.enums.MetaType;
 import com.sub.gen.enums.ReferenceType;
 import com.sub.gen.exception.UnsupportedFormException;
-import com.sub.gen.meta.*;
 import com.sub.gen.strategy.factory.DefaultCodeGenerateStrategyFactory;
 import com.sub.gen.tools.CodeBuilder;
 import com.sub.gen.tools.NameUtils;

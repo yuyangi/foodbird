@@ -1,9 +1,9 @@
 package com.sub.gen;
 
-import com.sub.gen.template.ICodeTemplate;
+import com.sub.gen.config.CodeConfig;
 
 public interface ICodeGenerator {
 
-	String generate(ICodeTemplate template);
+	String generate(CodeConfig template);
 	
 }

@@ -28,15 +28,7 @@ public class MainGen {
             DefaultShellCallback callback = new DefaultShellCallback(overwrite);
             MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
             myBatisGenerator.generate(null);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (XMLParserException e) {
-            e.printStackTrace();
-        } catch (InvalidConfigurationException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (IOException | XMLParserException | InvalidConfigurationException | SQLException | InterruptedException e) {
             e.printStackTrace();
         } finally {
         }

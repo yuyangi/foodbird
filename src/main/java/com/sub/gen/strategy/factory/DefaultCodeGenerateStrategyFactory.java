@@ -4,7 +4,7 @@ import com.sub.gen.enums.InstanceMode;
 import com.sub.gen.enums.MetaType;
 import com.sub.gen.enums.ReferenceForm;
 import com.sub.gen.enums.ReferenceType;
-import com.sub.gen.interfaces.StrategySelective;
+import com.sub.gen.codes.StrategySelective;
 import com.sub.gen.strategy.DefaultCodeGenerateStrategy;
 import com.sub.gen.strategy.ICodeGenerateStrategy;
 import com.sub.gen.strategy.form.DefaultFormStrategy;

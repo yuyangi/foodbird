@@ -1,6 +1,6 @@
 package com.sub.gen.enums;
 
-import com.sub.gen.interfaces.StrategySelective;
+import com.sub.gen.codes.StrategySelective;
 
 /**
  * 代码形态

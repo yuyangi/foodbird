@@ -1,7 +1,7 @@
 package com.sub.gen.strategy.form;
 
 import com.sub.gen.exception.UnsupportedFormException;
-import com.sub.gen.meta.ICodeModel;
+import com.sub.gen.codes.ICodeModel;
 import com.sub.gen.strategy.ICodeGenerateStrategy;
 import com.sub.gen.strategy.IGenMetaStrategy;
 import com.sub.gen.strategy.factory.DefaultGenMetaStrategyFactory;

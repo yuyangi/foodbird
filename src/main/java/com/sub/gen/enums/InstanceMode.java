@@ -1,6 +1,6 @@
 package com.sub.gen.enums;
 
-import com.sub.gen.interfaces.StrategySelective;
+import com.sub.gen.codes.StrategySelective;
 
 /**
  * Created by yy111026 on 2017/2/8.

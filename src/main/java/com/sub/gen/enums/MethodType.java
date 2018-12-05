@@ -8,7 +8,8 @@ public enum MethodType {
     Normal,
     Constructor,
     Static,
-    Anonymous
+    Anonymous,
+    LAMBDA
     ;
 
 }

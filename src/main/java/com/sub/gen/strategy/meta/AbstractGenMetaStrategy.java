@@ -2,7 +2,7 @@ package com.sub.gen.strategy.meta;
 
 import com.sub.gen.enums.MetaType;
 import com.sub.gen.exception.UnsupportedFormException;
-import com.sub.gen.meta.ICodeModel;
+import com.sub.gen.codes.ICodeModel;
 import com.sub.gen.strategy.ICodeGenerateStrategy;
 import com.sub.gen.strategy.IGenMetaStrategy;
 

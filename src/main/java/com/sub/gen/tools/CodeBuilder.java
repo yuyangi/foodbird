@@ -2,8 +2,7 @@ package com.sub.gen.tools;
 
 import com.sub.gen.constants.Constants;
 import com.sub.gen.enums.Modifier;
-import com.sub.gen.meta.ICodeModel;
-import com.sub.gen.meta.IMethod;
+import com.sub.gen.codes.ICodeModel;
 
 /**
  * Created by yy111026 on 2017/2/6.
