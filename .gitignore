@@ -2,5 +2,9 @@
 .project
 *.iml
 **/*.iml
-**/.out
-**/.bin
+**/out
+**/bin
+**/target
+**/out/*
+**/bin/*
+**/target/*
