@@ -7,7 +7,7 @@ import com.foodbird.generate.java.constants.Constants;
  * @prject com.yy.CodeGen
  * @date 2018/10/29
  */
-public class ForEach extends Block implements Constants {
+public class ForEach extends Section implements Constants {
 
     private boolean isLambda = true;
 

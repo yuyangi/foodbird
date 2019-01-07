@@ -11,5 +11,11 @@
 
     <artifactId>dynamic-generator</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.foodbird</groupId>
+            <artifactId>fb-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

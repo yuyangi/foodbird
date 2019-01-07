@@ -1,16 +1,16 @@
 package com.foodbird.generate.java.codes.method;
 
 import com.foodbird.generate.java.codes.*;
-import com.foodbird.generate.java.common.Block;
-import com.foodbird.generate.java.common.MethodBody;
+import com.foodbird.generate.java.codes.metas.Definitions;
+import com.foodbird.generate.java.common.Section;
+import com.foodbird.generate.java.common.Body;
+import com.foodbird.generate.java.common.Sentence;
+import com.foodbird.generate.java.common.Word;
 import com.foodbird.generate.java.constants.Constants;
 import com.foodbird.generate.java.enums.MetaType;
 import com.foodbird.generate.java.enums.MethodType;
 import com.foodbird.generate.java.enums.Modifier;
-import com.foodbird.generate.java.tools.CodeBuilder;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * Created by yuyang on 2016/11/27.
@@ -21,8 +21,6 @@ public class Getter extends Method implements Constants {
     private IAttribute attribute;
 
     private MethodType methodType;
-
-    private List<IReference> references;
 
     public Getter() {
 
@@ -55,21 +53,15 @@ public class Getter extends Method implements Constants {
     }
 
     @Override
-    public List<IReference> getReferences() {
-        return references;
+    public Section methodBody() {
+        return Body.methodBody(Sentence.sentence(Definitions.RETURN, Word.create(getAttribute().getCode())).end());
     }
 
-    public void setReferences(List<IReference> references) {
-        this.references = references;
+    public Word methodName() {
+        return Word.create(getter());
     }
 
-    @Override
-    public Block methodBody() {
-        // TODO
-        return null;
-    }
-
-    private String getter() {
+    public String getter() {
         return "get" + attribute.getCode().substring(0, 1).toUpperCase() + attribute.getCode().substring(1);
     }
 

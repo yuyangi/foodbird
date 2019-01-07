@@ -109,7 +109,7 @@ public class Reference extends BaseCodeModel implements IReference {
         switch (referenceType) {
             case STATIC_REFERENCE:
                 // TODO
-                String name = reference.getName();
+                String name = reference.getCode();
                 break;
             case INSTANCE_REFERENCE:
                 code.append(getStrategy().generate(reference));

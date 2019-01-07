@@ -1,9 +1,9 @@
 package com.foodbird.generate.java.codes;
 
-import com.foodbird.generate.java.constants.Constants;
 import com.foodbird.generate.java.enums.Modifier;
+import com.foodbird.generate.java.enums.ObjectType;
 
-public abstract class BaseCodeModel implements ICodeModel {
+public abstract class BaseCodeModel implements ICodeModel, Indented {
 
     private String id;
     private String name;
@@ -15,6 +15,9 @@ public abstract class BaseCodeModel implements ICodeModel {
     private Modifier modifier;
     private ICodeModel parent;
     private String comment;
+    private ObjectType objectType;
+    private String indent;
+    private boolean passed;
 
     @Override
     public String getName() {
@@ -118,22 +121,31 @@ public abstract class BaseCodeModel implements ICodeModel {
         return getName();
     }
 
-    public String indent() {
-        int dep = depth(this);
-        String indent = "";
-        for (int i = 0; i < dep; i++) {
-            indent += Constants.INDENT;
-        }
+    @Override
+    public ObjectType getObjectType() {
+        return objectType;
+    }
+
+    public void setObjectType(ObjectType objectType) {
+        this.objectType = objectType;
+    }
+
+    @Override
+    public String getIndent() {
         return indent;
     }
 
-    private int depth(ICodeModel codeModel) {
-        int dep = 0;
-        if (codeModel.getParent() != null) {
-            dep++;
-            dep += depth(codeModel.getParent());
-        }
-        return dep;
+    @Override
+    public void setIndent(String indent) {
+        this.indent = (this.indent == null) ? indent : (this.indent + indent);
     }
 
+    @Override
+    public boolean isPassed() {
+        return passed;
+    }
+
+    public void setPassed(boolean passed) {
+        this.passed = passed;
+    }
 }

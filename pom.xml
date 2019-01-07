@@ -25,6 +25,7 @@
         <module>biz-repository</module>
         <module>is-model</module>
         <module>tech-ability</module>
+        <module>fb-common</module>
     </modules>
     <properties>
         <!-- spring版本号 -->

@@ -3,7 +3,8 @@ package com.foodbird.generate.java.codes.method;
 import com.foodbird.generate.java.codes.IClass;
 import com.foodbird.generate.java.codes.IType;
 import com.foodbird.generate.java.codes.type.Type;
-import com.foodbird.generate.java.common.MethodBody;
+import com.foodbird.generate.java.common.Body;
+import com.foodbird.generate.java.common.Word;
 import com.foodbird.generate.java.enums.MetaType;
 import com.foodbird.generate.java.enums.MethodType;
 import com.foodbird.generate.java.tools.CodeBuilder;
@@ -23,13 +24,17 @@ public class JConstructor extends Method {
 
     public JConstructor(IClass iClass) {
         super();
-        setParent(iClass);
         this.parent = iClass;
     }
 
     @Override
-    public MethodBody methodBody() {
+    public Body methodBody() {
         return null;
+    }
+
+    @Override
+    public Word methodName() {
+        return Word.create(returnType.getTypeClass().getCode());
     }
 
     @Override

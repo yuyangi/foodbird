@@ -1,27 +1,29 @@
 package com.foodbird.generate.java.codes.method;
 
+import com.foodbird.generate.java.ICoder;
 import com.foodbird.generate.java.codes.*;
 import com.foodbird.generate.java.codes.metas.Charactor;
-import com.foodbird.generate.java.common.Block;
-import com.foodbird.generate.java.common.MethodBody;
+import com.foodbird.generate.java.codes.type.Type;
+import com.foodbird.generate.java.common.*;
 import com.foodbird.generate.java.constants.Constants;
+import com.foodbird.generate.java.enums.DataType;
 import com.foodbird.generate.java.enums.MetaType;
 import com.foodbird.generate.java.enums.MethodType;
-import com.foodbird.generate.java.tools.CodeBuilder;
 import com.foodbird.generate.java.tools.CollectionUtils;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import static com.foodbird.generate.java.codes.metas.Brackets.PARENTHESIS;
 
 /**
  * Created by yy111026 on 2017/2/6.
  */
 public abstract class Method extends BaseCodeModel implements IMethod, Constants {
 
-    private List<IParameter> parameters;
+    protected List<IParameter> parameters;
 
     private IType returnType;
 
@@ -40,6 +42,9 @@ public abstract class Method extends BaseCodeModel implements IMethod, Constants
 
     @Override
     public IType getReturnType() {
+        if (returnType == null) {
+            return Type.typeVoid;
+        }
         return returnType;
     }
 
@@ -51,23 +56,10 @@ public abstract class Method extends BaseCodeModel implements IMethod, Constants
     }
 
     protected String getReturn() {
-        if(returnType != null) {
-            return returnType.getTypeClass() != null ? returnType.getTypeClass().getCode() : returnType.getTypeClass().getCode();
+        if(getReturnType() != null) {
+            return getReturnType().getTypeClass() != null ? getReturnType().getTypeClass().getCode() : getReturnType().getTypeClass().getCode();
         }
-        return "void";
-    }
-
-    protected String getParameterString() {
-        if(getParameters() != null) {
-            CodeBuilder paramBuilder = new CodeBuilder();
-            List<String> paramDef = new ArrayList<>();
-            for (IParameter param : getParameters()) {
-                paramDef.add(param.getType().getTypeClass().getCode() + " " + param.getCode());
-            }
-            paramBuilder.append(String.join(", ", paramDef));
-            return paramBuilder.toString();
-        }
-        return null;
+        return DataType.VOID.name().toLowerCase();
     }
 
     @Override
@@ -81,7 +73,7 @@ public abstract class Method extends BaseCodeModel implements IMethod, Constants
                 ims.add(returnType.getTypeClass());
             }
             if (exceptions != null) {
-                exceptions.forEach(ims::add);
+                ims.addAll(exceptions);
             }
             if (references != null) {
                 references.forEach(r -> ims.add(r.getReference()));
@@ -131,14 +123,19 @@ public abstract class Method extends BaseCodeModel implements IMethod, Constants
 
     @Override
     public String toCode() {
-        return Block.create(Charactor.SPACE.toCode(), methodDefine(), methodBody()).toCode();
+        return IndentSection.create(WORD_SEPARATOR, IndentSection.create("", methodDefine(), paramDefine()), methodBody()).indent(getIndent()).toCode();
     }
 
-    public Block methodDefine() {
-
-        return null;
+    public Section methodDefine() {
+        return Sentence.sentence(WORD_SEPARATOR, getVisibility(), getReturnType(), methodName());
     }
 
-    public abstract Block methodBody();
+    private ICoder paramDefine() {
+        return Body.paramBody(Phrase.phrase(Charactor.COMMA.toCode(), getParameters()));
+    }
+
+    public abstract Section methodBody();
+
+    public abstract Word methodName();
 
 }

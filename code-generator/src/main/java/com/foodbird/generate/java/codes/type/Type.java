@@ -3,6 +3,8 @@ package com.foodbird.generate.java.codes.type;
 import com.foodbird.generate.java.codes.BaseCodeModel;
 import com.foodbird.generate.java.codes.IClass;
 import com.foodbird.generate.java.codes.IType;
+import com.foodbird.generate.java.codes.classes.ClassAdapter;
+import com.foodbird.generate.java.codes.classes.Void;
 import com.foodbird.generate.java.enums.MetaType;
 
 /**
@@ -10,7 +12,16 @@ import com.foodbird.generate.java.enums.MetaType;
  */
 public class Type extends BaseCodeModel implements IType {
 
+    public static Type typeVoid = new Type(new Void());
+
     private IClass type;
+
+    public Type() {
+    }
+
+    public Type(IClass type) {
+        this.type = type;
+    }
 
     @Override
     public IClass getTypeClass() {
@@ -23,7 +34,7 @@ public class Type extends BaseCodeModel implements IType {
 
     @Override
     public String toCode() {
-        return null;
+        return type.getCode();
     }
 
     @Override
@@ -44,6 +55,18 @@ public class Type extends BaseCodeModel implements IType {
             return true;
         }
         return false;
+    }
+
+    public static IType typeOf(IClass type) {
+        return new Type(type);
+    }
+
+    public static IType typeOf(Class<?> type) {
+        return new Type(new ClassAdapter(type));
+    }
+
+    public static IType typeVoid() {
+        return typeVoid;
     }
 
 }

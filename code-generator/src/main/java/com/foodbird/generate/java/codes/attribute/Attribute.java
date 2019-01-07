@@ -3,6 +3,8 @@ package com.foodbird.generate.java.codes.attribute;
 import com.foodbird.generate.java.codes.BaseCodeModel;
 import com.foodbird.generate.java.codes.IAttribute;
 import com.foodbird.generate.java.codes.IType;
+import com.foodbird.generate.java.common.Sentence;
+import com.foodbird.generate.java.common.Word;
 import com.foodbird.generate.java.enums.MetaType;
 import com.foodbird.generate.java.tools.CodeBuilder;
 import com.foodbird.generate.java.tools.NameUtils;
@@ -25,9 +27,8 @@ public class Attribute extends BaseCodeModel implements IAttribute {
 
     @Override
     public String toCode() {
-        CodeBuilder codes = new CodeBuilder();
-        codes.append(indent()).append(getVisibility().toString() + " ").append(getType().getTypeClass().getCode()).append(" ").append(NameUtils.getVarName(getCode())).end().newLine();
-        return codes.toString();
+        return Sentence.sentence(getVisibility(), getModifier(), getType(),
+                Word.create(NameUtils.getVarName(getCode()))).end().toCode();
     }
 
     @Override

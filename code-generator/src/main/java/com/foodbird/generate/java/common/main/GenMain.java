@@ -3,6 +3,7 @@ package com.foodbird.generate.java.common.main;
 import com.foodbird.generate.java.codes.IAttribute;
 import com.foodbird.generate.java.codes.IClass;
 import com.foodbird.generate.java.codes.IPackage;
+import com.foodbird.generate.java.codes.IType;
 import com.foodbird.generate.java.codes.packages.Package;
 import com.foodbird.generate.java.codes.attribute.Attribute;
 import com.foodbird.generate.java.codes.classes.ClassAdapter;
@@ -28,12 +29,8 @@ public class GenMain {
 
 
     public static String genDto() {
-        IClass ClassString = new ClassAdapter(String.class);
-        IClass ClassInt = new ClassAdapter(Integer.class);
-        Type typeString = new Type();
-        Type typeInt = new Type();
-        typeString.setType(ClassString);
-        typeInt.setType(ClassString);
+        IType typeString = Type.typeOf(String.class);
+        IType typeInt = Type.typeOf(Integer.class);
 
         IPackage packages = new Package("com.sub.test.business");
 
@@ -76,15 +73,15 @@ public class GenMain {
         attrs.add(attr4);
 
         dto1.setAttributes(attrs);
-
+        String codes = dto1.toCode();
         try {
-            FileCodeWriter.writeWithFileChannel("/Users/yuyang48/Desktop/", dto1.getCode()+".java", dto1.toCode());
+            FileCodeWriter.writeWithFileChannel("/Users/yuyang48/Desktop/", dto1.getCode()+".java", codes);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        System.out.println(dto1.toCode());
-        return dto1.toCode();
+        System.out.println(codes);
+        return codes;
     }
 
 }

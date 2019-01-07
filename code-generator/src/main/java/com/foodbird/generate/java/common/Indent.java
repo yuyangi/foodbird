@@ -11,6 +11,8 @@ import com.foodbird.generate.java.constants.Constants;
  */
 public class Indent implements ICoder, Constants {
 
+    public static final Indent instance = new Indent();
+
     @Override
     public String toCode() {
         return INDENT;

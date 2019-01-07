@@ -2,13 +2,16 @@ package com.foodbird.generate.java.codes.classes;
 
 import com.foodbird.generate.java.ICoder;
 import com.foodbird.generate.java.codes.*;
-import com.foodbird.generate.java.common.Block;
+import com.foodbird.generate.java.common.*;
 import com.foodbird.generate.java.constants.Constants;
 import com.foodbird.generate.java.enums.MetaType;
+import com.foodbird.generate.java.enums.Modifier;
+import com.foodbird.generate.java.enums.ObjectType;
 import com.google.common.collect.Sets;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author yuyang48
@@ -17,9 +20,15 @@ import java.util.Set;
  */
 public abstract class BaseClass extends BaseCodeModel implements JClass, IType, Constants {
 
+    public BaseClass() {
+        super();
+        this.setVisibility(Modifier.PUBLIC);
+        this.setObjectType(ObjectType.CLASS);
+    }
+
     @Override
     public String getQualifiedName() {
-        return getPackages() + "." + getName();
+        return getPackages() + "." + getCode();
     }
 
     @Override
@@ -29,26 +38,35 @@ public abstract class BaseClass extends BaseCodeModel implements JClass, IType, 
 
     @Override
     public String toCode() {
-        return Block.create(LINE_SEPARATOR, improts(), getBody()).toCode();
+        return Section.create(LINE_SEPARATOR+LINE_SEPARATOR, packages(), imports(), Sentence.sentence(classDefine(), body())).toCode();
     }
 
-    protected Block attributes() {
-        return Block.create(LINE_SEPARATOR, attributes.toArray(new ICoder[0]));
+    private Section packages() {
+        return Sentence.sentence(getPackages()).end();
     }
 
-    protected Block methods() {
-        return Block.create(LINE_SEPARATOR, methods.toArray(new ICoder[0]));
+    Section attributes() {
+        return IndentSection.create(LINE_SEPARATOR, attributes.stream().map(Sentence::sentence).toArray(ICoder[]::new));
     }
 
-    protected Block improts() {
+    Section methods() {
+        return IndentSection.create(LINE_SEPARATOR, methods.stream().map(IndentSection::create).toArray(ICoder[]::new));
+    }
+
+    Section imports() {
         Set<IClass> imports = Sets.newHashSet();
         getAttributes().forEach(attr -> imports.add(attr.getType().getTypeClass()));
         getMethods().forEach(method -> imports.addAll(method.getImports()));
-        return Block.create(LINE_SEPARATOR, imports.toArray(new ICoder[0]));
+        return Imports.imports(imports.toArray(new IClass[0]));
     }
 
-    protected Block getBody() {
-        return Block.create(LINE_SEPARATOR + LINE_SEPARATOR, attributes(), methods());
+    Section body() {
+        return Body.classBody(attributes(), methods());
+    }
+
+    Section classDefine() {
+        return Sentence.sentence(getVisibility(), getModifier(), getObjectType(),
+                Word.create(getCode()));
     }
 
     @Override
@@ -56,13 +74,13 @@ public abstract class BaseClass extends BaseCodeModel implements JClass, IType, 
         return this;
     }
 
-    protected List<IAttribute> attributes;
+    List<IAttribute> attributes;
 
-    protected List<IMethod> methods;
+    List<IMethod> methods;
 
-    protected List<IClass> generics;
+    List<IClass> generics;
 
-    protected List<IMethod> constructors;
+    List<IMethod> constructors;
 
     protected String varName;
 

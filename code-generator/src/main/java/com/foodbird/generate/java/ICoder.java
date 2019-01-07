@@ -7,4 +7,8 @@ public interface ICoder {
 
     String toCode();
 
+    default String comments() {
+        return "";
+    }
+
 }

@@ -16,7 +16,8 @@ public enum Definitions implements IMeta {
     RETURN("return"),
     EXTENDS("extends"),
     IMPLEMENTS("implements"),
-    NEW("new")
+    NEW("new"),
+    IMPORT("import"),
     ;
 
     private String name;

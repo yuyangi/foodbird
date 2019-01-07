@@ -1,6 +1,8 @@
 package com.foodbird.generate.java.codes;
 
-public interface IType {
+import com.foodbird.generate.java.ICoder;
+
+public interface IType extends ICoder {
 
     IClass getTypeClass();
 

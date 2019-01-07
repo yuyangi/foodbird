@@ -1,6 +1,8 @@
 package com.foodbird.generate.java.enums;
 
-public enum Modifier {
+import com.foodbird.generate.java.ICoder;
+
+public enum Modifier implements ICoder {
 
 	FINAL,
 	STATIC,
@@ -14,6 +16,11 @@ public enum Modifier {
 	ABSTRACT;
 
 	public String toString() {
+		return name().toLowerCase();
+	}
+
+	@Override
+	public String toCode() {
 		return name().toLowerCase();
 	}
 

@@ -98,6 +98,6 @@ public class ClassAdapter extends BaseCodeModel implements JClass {
     @Override
     public String toCode() {
         CodeBuilder codes = new CodeBuilder();
-        return codes.toString();
+        return clz.getName();
     }
 }

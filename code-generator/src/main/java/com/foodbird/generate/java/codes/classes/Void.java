@@ -16,7 +16,12 @@ public class Void extends BaseCodeModel implements IClass {
 
     @Override
     public String toCode() {
-        return DataType.VOID.name();
+        return DataType.VOID.name().toLowerCase();
+    }
+
+    @Override
+    public String getCode() {
+        return DataType.VOID.name().toLowerCase();
     }
 
     @Override
@@ -36,7 +41,7 @@ public class Void extends BaseCodeModel implements IClass {
 
     @Override
     public String getQualifiedName() {
-        return DataType.VOID.name();
+        return DataType.VOID.name().toLowerCase();
     }
 
     @Override
