@@ -2,6 +2,7 @@ package com.foodbird.generate.dynamic;
 
 import com.foodbird.common.context.FBIContext;
 import com.foodbird.generate.dynamic.enums.FBActionType;
+import com.foodbird.generate.dynamic.exceptions.FBActionException;
 
 /**
  * @author yuyang48
@@ -65,4 +66,9 @@ public interface FBIAction<R> {
      *      FBActionType#ROUTER 路由操作；返回值必须是String类型，执行指定返回值节点的操作
      */
     FBActionType actionType();
+
+    default void onException(Throwable t) throws Exception {
+        throw new FBActionException("执行" + name() + "("+id()+")功能时出错！" , t);
+    }
+
 }

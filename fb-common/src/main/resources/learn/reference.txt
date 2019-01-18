@@ -1,0 +1,4 @@
+http://thulac.thunlp.org/
+https://github.com/thunlp/THULAC-Java
+https://github.com/fxsjy/jieba
+https://www.jianshu.com/p/5992114c97df

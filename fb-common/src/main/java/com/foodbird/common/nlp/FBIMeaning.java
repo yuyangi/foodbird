@@ -8,5 +8,4 @@ public interface FBIMeaning extends FBIUnderstanding {
 
     FBIWord[] relevants();
 
-
 }

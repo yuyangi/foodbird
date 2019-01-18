@@ -1,6 +1,6 @@
 package com.foodbird.common.enums;
 
-public enum FBUnderstandScope {
+public enum FBUnderstandNature {
 
     /**
      * 概念

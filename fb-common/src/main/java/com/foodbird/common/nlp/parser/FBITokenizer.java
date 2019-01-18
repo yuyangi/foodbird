@@ -11,17 +11,12 @@ public interface FBITokenizer<Source, Target> {
 
     FBITokenizer<Source, Target> source(Source s);
 
-    Source source();
-
-    boolean hasNext();
-
-    Target next();
-
-    Target prefer(Target[] words);
+    //Source source();
 
     Map<Target[], Integer> evaluate(Target[][] splits);
 
     Target[][] split();
 
     boolean isCompleted();
+
 }

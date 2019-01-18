@@ -7,20 +7,20 @@ package com.foodbird.generate.dynamic;
  */
 public class FBNode {
 
-    public FBNode(FBIAction current) {
-        this.current = current;
+    public FBNode(FBIAction action) {
+        this.action = action;
     }
 
-    private FBIAction current;
+    private FBIAction action;
 
     private FBNode next;
 
-    public FBIAction getCurrent() {
-        return current;
+    public FBIAction getAction() {
+        return action;
     }
 
-    public void setCurrent(FBIAction current) {
-        this.current = current;
+    public void setCurrent(FBIAction action) {
+        this.action = action;
     }
 
     public FBNode getNext() {

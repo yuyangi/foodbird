@@ -6,6 +6,6 @@ public interface FBIService {
 
     List<FBIAction> getActions();
 
-    Object process(Object... args);
+    Object process(Object... args) throws Throwable;
 
 }

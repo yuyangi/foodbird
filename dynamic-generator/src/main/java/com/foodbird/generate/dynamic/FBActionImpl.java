@@ -1,7 +1,6 @@
 package com.foodbird.generate.dynamic;
 
 import com.foodbird.common.context.FBIContext;
-import com.foodbird.generate.dynamic.annotations.fbact;
 import com.foodbird.generate.dynamic.enums.FBActionType;
 import com.google.common.collect.Maps;
 import org.apache.commons.beanutils.PropertyUtils;
@@ -19,9 +18,9 @@ import java.util.Map;
  * @prject com.foodbird.coder
  * @date 2018/12/28
  */
-public class FBAction<R> implements FBIAction {
+public class FBActionImpl<R> implements FBIAction {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(FBAction.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FBActionImpl.class);
 
     private transient Object bean;
 
@@ -31,14 +30,14 @@ public class FBAction<R> implements FBIAction {
 
     private FBIContext context;
 
-    private fbact action;
+    private com.foodbird.generate.dynamic.annotations.FBAction action;
 
     private FBActionType actionType;
 
-    public FBAction() {
+    public FBActionImpl() {
     }
 
-    public FBAction(Object bean, Method method, fbact action) {
+    public FBActionImpl(Object bean, Method method, com.foodbird.generate.dynamic.annotations.FBAction action) {
         this.bean = bean;
         this.method = method;
         this.action = action;

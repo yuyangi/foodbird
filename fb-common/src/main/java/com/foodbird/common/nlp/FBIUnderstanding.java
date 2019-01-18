@@ -1,6 +1,6 @@
 package com.foodbird.common.nlp;
 
-import com.foodbird.common.enums.FBUnderstandScope;
+import com.foodbird.common.enums.FBUnderstandNature;
 
 /**
  * @author yuyang48
@@ -9,6 +9,6 @@ import com.foodbird.common.enums.FBUnderstandScope;
  */
 public interface FBIUnderstanding {
 
-    FBUnderstandScope scope();
+    FBUnderstandNature nature();
 
 }

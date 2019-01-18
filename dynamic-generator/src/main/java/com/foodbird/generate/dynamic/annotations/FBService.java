@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Service
-public @interface fbsvc {
+public @interface FBService {
 
     /**
      * 节点名称

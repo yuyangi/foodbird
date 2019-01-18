@@ -3,14 +3,17 @@ package com.foodbird.common.nlp.parser;
 import com.foodbird.common.nlp.FBIDescription;
 import com.foodbird.common.nlp.FBIDictionary;
 import com.foodbird.common.nlp.FBIWord;
+import com.foodbird.common.nlp.dictionary.FBDictionaryFactory;
+import com.foodbird.common.nlp.dictionary.FBWord;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.*;
-import java.lang.instrument.Instrumentation;
-import java.net.URL;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author yuyang48
@@ -19,18 +22,24 @@ import java.util.*;
  */
 public class FBTokenizer implements FBITokenizer<FBIDescription, FBIWord> {
 
+    public static final Logger LOGGER = LoggerFactory.getLogger(FBTokenizer.class);
+
     private FBIDescription source;
 
     private FBIWord next;
 
     private String remain;
 
-    private List<String> sentences;
-
     private FBIDictionary dictionary;
 
+    private boolean complete;
+
     public FBTokenizer() {
-        sentences = new ArrayList<>();
+        try {
+            dictionary = FBDictionaryFactory.load(FBDictionaryFactory.DEFAULT_DICTIONARY);
+        } catch (Exception e) {
+            LOGGER.error("Load dictionary failed!", e);
+        }
     }
 
     @Override
@@ -39,24 +48,9 @@ public class FBTokenizer implements FBITokenizer<FBIDescription, FBIWord> {
         return this;
     }
 
-    @Override
+    //@Override
     public FBIDescription source() {
         return source;
-    }
-
-    @Override
-    public boolean hasNext() {
-        return false;
-    }
-
-    @Override
-    public FBIWord next() {
-        return null;
-    }
-
-    @Override
-    public FBIWord prefer(FBIWord[] words) {
-        return null;
     }
 
     @Override
@@ -66,40 +60,47 @@ public class FBTokenizer implements FBITokenizer<FBIDescription, FBIWord> {
 
     @Override
     public FBIWord[][] split() {
-        List<FBIWord[]> possibleSplits = Lists.newArrayList();
-
-        return possibleSplits.toArray(new FBIWord[0][]);
+        List<List<String>> possibleSplitStrings = splitsIterator2List(source.description());
+        if (possibleSplitStrings == null) {
+            complete = false;
+            return null;
+        }
+        FBIWord[][] possibleSplits = new FBIWord[possibleSplitStrings.size()][];
+        for (int i = 0; i < possibleSplitStrings.size(); i++) {
+            FBIWord[] words = possibleSplitStrings.get(i).stream().map(FBWord::new).toArray(FBIWord[]::new);
+            possibleSplits[i] = words;
+        }
+        complete = true;
+        return possibleSplits;
     }
 
     @Override
     public boolean isCompleted() {
-        return false;
+        return complete;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 //        String description = "从前有座山，山里有个庙,庙里有个和尚；和尚有个筐;筐里有个盆。";
 //
 //        StringTokenizer tokenizer = new StringTokenizer(description, "，。；,.; \t\n\r\f");
 //        while (tokenizer.hasMoreTokens()) {
 //            System.out.println(tokenizer.nextToken());
 //        }
-
-        List<String> dictionary = loadDic();
+        FBTokenizer tokenizer = new FBTokenizer();
         String description = "模拟主存储器空间的分配和回收";
 
-        List<List<String>> strings = splitsIterator2List(description, dictionary);
+        List<List<String>> strings = tokenizer.splitsIterator2List(description);
         for (List<String> row : strings) {
             System.out.println(Joiner.on(" ").join(row));
         }
-
     }
 
-    private static List<List<String>> splitsIterator2List(String description, List<String> dictionary) {
+    public List<List<String>> splitsIterator2List(String description) {
         if ("".equals(description)) {
             return null;
         }
         List<List<String>> lists = Lists.newArrayList();
-        if (dictionary.contains(description)) {
+        if (dictionary.isWord(description)) {
             lists.add(Lists.newArrayList(description));
         }
         char[] chars = description.toCharArray();
@@ -109,7 +110,7 @@ public class FBTokenizer implements FBITokenizer<FBIDescription, FBIWord> {
         for (int i = 0, charsLength = chars.length; i < charsLength; i++) {
             char c = chars[i];
             cs += c;
-            if (dictionary.contains(cs)) {
+            if (dictionary.isWord(cs)) {
                 findWord = true;
                 String left = new String(Arrays.copyOfRange(chars, i + 1, charsLength));
                 lefts.put(cs, left);
@@ -120,7 +121,7 @@ public class FBTokenizer implements FBITokenizer<FBIDescription, FBIWord> {
         }
 
         for (Map.Entry<String, String> left : lefts.entrySet()) {
-            List<List<String>> tempList = splitsIterator2List(left.getValue(), dictionary);
+            List<List<String>> tempList = splitsIterator2List(left.getValue());
             if (tempList != null) {
                 for (List<String> row : tempList) {
                     row.add(0, left.getKey());
@@ -131,26 +132,4 @@ public class FBTokenizer implements FBITokenizer<FBIDescription, FBIWord> {
         return lists;
     }
 
-    private static List<String> loadDic() {
-        URL resource = FBTokenizer.class.getClassLoader().getResource("dic/main2012.dic");
-        File dicFile = new File(resource.getPath());
-
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(dicFile));
-            String line;
-            List<String> dic = Lists.newArrayList();
-            while ((line = br.readLine()) != null) {
-                String[] split = line.split("\t");
-                if (split.length > 0) {
-                    dic.add(split[0]);
-                }
-            }
-            dic.add("和");
-            dic.add("的");
-            return dic;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 }
