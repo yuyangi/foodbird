@@ -10,8 +10,10 @@ import java.lang.annotation.*;
 @Inherited
 public @interface FBEntity {
 
+    @AliasFor("cn")
     String name();
 
+    @AliasFor("en")
     String code() default "";
 
     @AliasFor("code")

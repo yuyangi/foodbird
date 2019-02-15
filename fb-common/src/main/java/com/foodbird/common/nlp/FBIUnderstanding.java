@@ -7,8 +7,9 @@ import com.foodbird.common.enums.FBUnderstandNature;
  * @prject com.foodbird.coder
  * @date 2018/12/29
  */
-public interface FBIUnderstanding {
+public interface FBIUnderstanding<Subject> {
 
     FBUnderstandNature nature();
 
+    Subject subject();
 }

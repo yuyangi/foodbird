@@ -4,13 +4,14 @@ import com.foodbird.common.context.FBIContext;
 import com.foodbird.generate.dynamic.enums.FBActionType;
 import com.google.common.collect.Maps;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.util.Map;
 
 /**
@@ -27,6 +28,7 @@ public class FBActionImpl<R> implements FBIAction {
     private transient Method method;
 
     private Map<Class<?>, String> paramMapperCache = Maps.newHashMap();
+    private Map<Class<?>, Integer> paramIndexCache = Maps.newHashMap();
 
     private FBIContext context;
 
@@ -64,48 +66,40 @@ public class FBActionImpl<R> implements FBIAction {
 
     private R execute(FBIContext ctx) throws Exception {
         Class<?>[] parameterTypes = method.getParameterTypes();
+        //Parameter[] parameters = method.getParameters();
         Object param = ctx.get(id());
-        if (ArrayUtils.isEmpty(parameterTypes) && parameterTypes.length == 1) {
+        if (ArrayUtils.isNotEmpty(parameterTypes) && parameterTypes.length == 1) {
             if (parameterTypes[0].isAssignableFrom(param.getClass())) {
                 return invoke(param);
             } else {
                 boolean findAndInvoked = false;
-                Object property = null;
-                if (paramMapperCache.containsKey(parameterTypes[0])) {
-                    property = PropertyUtils.getProperty(param, paramMapperCache.get(parameterTypes[0]));
+                Object property;
+                if (param.getClass().isArray()) {
+                    property = findParamValueFromArray(param, parameterTypes[0]);
                     findAndInvoked = true;
                 } else {
-                    Field[] declaredFields = param.getClass().getDeclaredFields();
-                    for (Field field : declaredFields) {
-                        if (parameterTypes[0].isAssignableFrom(field.getType())) {
-                            property = PropertyUtils.getProperty(param, field.getName());
-                            findAndInvoked = true;
-                            paramMapperCache.put(parameterTypes[0], field.getName());
-                        }
+                    property = findParamValueFromProperty(param, parameterTypes[0]);
+                    if (property != param) {
+                        findAndInvoked = true;
                     }
                 }
+
                 if (!findAndInvoked) {
                     throw new IllegalArgumentException("No matched param for service[" + ArrayUtils.toString(serviceId()) + "].action[" + id() + "].");
                 }
                 return invoke(property);
             }
-        } else if (ArrayUtils.isEmpty(parameterTypes)) {
+        } else if (ArrayUtils.isNotEmpty(parameterTypes)) {
             Object[] params = new Object[parameterTypes.length];
-            Field[] declaredFields = null;
             for (int i = 0; i < parameterTypes.length; i++) {
                 Class<?> type = parameterTypes[i];
-                Object property = null;
-                if (paramMapperCache.containsKey(type)) {
-                    property = PropertyUtils.getProperty(param, paramMapperCache.get(type));
+                Object property;
+                if (param.getClass().isArray()) {
+                    property = findParamValueFromArray(param, type);
                 } else {
-                    if (declaredFields == null) {
-                        declaredFields = param.getClass().getDeclaredFields();
-                    }
-                    for (Field field : declaredFields) {
-                        if (type.isAssignableFrom(field.getType())) {
-                            property = PropertyUtils.getProperty(param, field.getName());
-                            paramMapperCache.put(type, field.getName());
-                        }
+                    property = findParamValueFromProperty(param, type);
+                    if (property == param) {
+                        property = null;
                     }
                 }
                 params[i] = property;
@@ -114,6 +108,44 @@ public class FBActionImpl<R> implements FBIAction {
         } else {
             return invoke();
         }
+    }
+
+    private Class<?> getDeclaredMethodParamType(Parameter parameter) {
+        return parameter.getDeclaringExecutable().getDeclaringClass();
+    }
+
+    private Object findParamValueFromProperty(Object param, Class<?> parameterType) throws Exception {
+        Object property = param;
+        if (paramMapperCache.containsKey(parameterType)) {
+            property = PropertyUtils.getProperty(param, paramMapperCache.get(parameterType));
+        } else {
+            Field[] declaredFields = param.getClass().getDeclaredFields();
+            for (Field field : declaredFields) {
+                if (parameterType.isAssignableFrom(field.getType())) {
+                    property = PropertyUtils.getProperty(param, field.getName());
+                    paramMapperCache.put(parameterType, field.getName());
+                    return property;
+                }
+            }
+        }
+        return property;
+    }
+
+    private Object findParamValueFromArray(Object param, Class<?> parameterType) throws Exception {
+        Object property = null;
+        Object[] params = (Object[]) param;
+        if (paramIndexCache.containsKey(parameterType)) {
+            property = params[paramIndexCache.get(parameterType)];
+        } else {
+            for (int i = 0; i < params.length; i++) {
+                Object p = params[i];
+                if (parameterType.isAssignableFrom(p.getClass())) {
+                    property = p;
+                    paramIndexCache.put(parameterType, i);
+                }
+            }
+        }
+        return property;
     }
 
     @SuppressWarnings("unchecked")

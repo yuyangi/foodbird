@@ -1,7 +1,7 @@
 package com.foodbird.generate.dynamic;
 
 import com.foodbird.common.context.FBIContext;
-import com.foodbird.generate.dynamic.annotations.FBService;
+import com.foodbird.generate.dynamic.annotations.FBProcess;
 import com.foodbird.generate.dynamic.constants.FBConstants;
 import com.foodbird.generate.dynamic.enums.FBPersistentType;
 import com.foodbird.generate.dynamic.utils.FBDAGUtils;
@@ -71,7 +71,7 @@ public class FBServiceImpl implements FBIService, FBConstants {
         this.persistentType = FBPersistentType.MEMORY;
     }
 
-    public FBServiceImpl(FBService fbservice, List<FBIAction> actions) {
+    public FBServiceImpl(FBProcess fbservice, List<FBIAction> actions) {
         this.actions = actions;
         this.degradation = fbservice.degradation();
         this.id = fbservice.id();
@@ -80,6 +80,7 @@ public class FBServiceImpl implements FBIService, FBConstants {
         this.needRetry = fbservice.needRetry();
         this.ordered = fbservice.ordered();
         this.persistentType = fbservice.persistentType();
+        this.reorderByDependencies();
     }
 
     public FBSeries reorderByDependencies() {
@@ -104,11 +105,12 @@ public class FBServiceImpl implements FBIService, FBConstants {
         return series;
     }
 
-    public Object start(Object parameter) throws Throwable {
+    public Object start(Object[] parameter) throws Throwable {
         FBIContext context = new FBActionContext();
         Object result = null;
         if (actions.size() > 0) {
-            context.put(actions.get(0).id(), parameter);
+            // 只有一个参数的时候不用数组传入
+            context.put(actions.get(0).id(), parameter.length > 1 ? parameter : parameter[0]);
         }
         FBSeries fbSeries = reorderByDependencies();
         FBNode current = fbSeries.getFirst();

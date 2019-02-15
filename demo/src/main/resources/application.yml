@@ -1,0 +1,15 @@
+logging:
+  level:
+    root: debug
+
+#mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.4.243.14:3306/waimai?useUnicode=true&characterEncoding=utf8
+    username: q3boy
+    password: alkf@xpdw
+    type: com.alibaba.druid.pool.DruidDataSource

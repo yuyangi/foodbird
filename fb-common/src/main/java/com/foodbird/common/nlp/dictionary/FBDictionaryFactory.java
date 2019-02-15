@@ -24,12 +24,12 @@ public class FBDictionaryFactory {
 
     private static Map<String, FBIDictionary> dics = Maps.newHashMap();
 
-    public static FBIDictionary load(String dicName) throws Exception {
+    public static synchronized FBIDictionary load(String dicName) throws Exception {
         if (dics.containsKey(dicName)) {
             return dics.get(dicName);
         }
         FBIDictionary dic = new FBDictionary();
-        dic.load(loadDic());
+        dic.loadRaw(loadDic());
         dics.put(dicName, dic);
         return dic;
     }

@@ -1,49 +1,19 @@
 package com.foodbird.generate.dynamic.annotations;
 
-import com.foodbird.generate.dynamic.enums.FBPersistentType;
-import org.springframework.stereotype.Service;
+import org.springframework.core.annotation.AliasFor;
 
-import java.lang.annotation.*;
-
-@Target({ElementType.TYPE, ElementType.CONSTRUCTOR})
-@Retention(RetentionPolicy.RUNTIME)
-@Inherited
-@Service
 public @interface FBService {
 
-    /**
-     * 节点名称
-     */
+    @AliasFor("cn")
     String name() default "";
 
-    /**
-     * 流程id
-     */
-    String id() default "";
+    @AliasFor("en")
+    String code() default "";
 
-    /**
-     * 是否需要重试
-     */
-    boolean needRetry() default true;
+    @AliasFor("code")
+    String en() default "";
 
-    /**
-     * 限流
-     */
-    int limitation() default -1;
-
-    /**
-     * 降级
-     */
-    int degradation() default -1;
-
-    /**
-     * 节点间是否有序
-     */
-    boolean ordered() default true;
-
-    /**
-     * 持久化类型
-     */
-    FBPersistentType persistentType() default FBPersistentType.DB;
+    @AliasFor("name")
+    String cn() default "";
 
 }

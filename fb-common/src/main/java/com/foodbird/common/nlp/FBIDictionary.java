@@ -12,6 +12,12 @@ public interface FBIDictionary {
 
     String possibleWord(String word);
 
-    void load(List<String> words);
+    void load(List<FBIWord<?>> words);
+
+    void loadRaw(List<String> words);
+
+    void load(FBIWord<?> word);
+
+    void loadRaw(String word);
 
 }

@@ -1,5 +1,6 @@
 package com.foodbird.common.context;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -11,6 +12,11 @@ public class FBContext implements FBIContext {
 
     private Map<String, Class<?>> typeContext;
     private Map<Class<?>, Object> objectContext;
+
+    public FBContext() {
+        this.typeContext = new HashMap<>();
+        this.objectContext = new HashMap<>();
+    }
 
     @Override
     public Object get(String key) {
