@@ -122,7 +122,7 @@ public class FBServiceImpl implements FBIService, FBConstants {
                 action.onException(throwable);
             }
             if (result == null) {
-                current = null;
+                current = current.getNext();
                 continue;
             }
             switch (action.actionType()) {

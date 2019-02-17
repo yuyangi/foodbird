@@ -23,7 +23,7 @@ public class ClassService extends BaseService<Classes> {
     }
 
     @Override
-    @FBOperation(name = "创建", code = "create")
+    @FBOperation(name = "创建", code = "crea5te")
     @FBAction(id = "createClass", serviceId = "createClass",dependencies = {"createStudent, createTeacher"})
     public void create(Classes aClass) {
         super.create(aClass);

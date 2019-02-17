@@ -1,7 +1,5 @@
 package com.foodbird.demo;
 
-import com.foodbird.demo.mybatis.DataRouterInterceptor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -12,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class BeanConfig {
 
-    @Bean
-    public DataRouterInterceptor dataRouterInterceptor() {
-        return new DataRouterInterceptor();
-    }
+    //@Bean
+//    public DataRouterInterceptor dataRouterInterceptor() {
+//        return new DataRouterInterceptor();
+//    }
 
 }

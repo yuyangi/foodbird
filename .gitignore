@@ -8,3 +8,11 @@
 **/out/*
 **/bin/*
 **/target/*
+.classpath
+.settings/org.eclipse.m2e.core.prefs
+biz-repository/.classpath
+biz-repository/.settings/org.eclipse.jdt.core.prefs
+biz-repository/.settings/org.eclipse.m2e.core.prefs
+code-generator/.classpath
+code-generator/.settings/org.eclipse.jdt.core.prefs
+code-generator/.settings/org.eclipse.m2e.core.prefs

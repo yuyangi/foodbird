@@ -25,7 +25,8 @@ public class CreateMethod extends Method {
         List<ICoder> codes = Lists.newArrayList();
         Section block = Body.create(Body.LINE_SEPARATOR, codes.toArray(new ICoder[0]));
         Body body = new Body();
-        return null;
+        body.add(block);
+        return body;
     }
 
     @Override

@@ -16,8 +16,6 @@ import com.google.common.collect.Sets;
 import java.util.List;
 import java.util.Set;
 
-import static com.foodbird.generate.java.codes.metas.Brackets.PARENTHESIS;
-
 /**
  * Created by yy111026 on 2017/2/6.
  */
@@ -31,7 +29,7 @@ public abstract class Method extends BaseCodeModel implements IMethod, Constants
 
     private List<IClass> imports;
 
-    private MethodType methodType;
+    //private MethodType methodType;
 
     private List<IReference> references;
 

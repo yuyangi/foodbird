@@ -1,13 +1,17 @@
 package com.foodbird.generate.java.codes.method;
 
-import com.foodbird.generate.java.codes.*;
-import com.foodbird.generate.java.codes.metas.Brackets;
+import java.util.List;
+
+import com.foodbird.generate.java.codes.IAttribute;
+import com.foodbird.generate.java.codes.ICodeModel;
+import com.foodbird.generate.java.codes.IParameter;
+import com.foodbird.generate.java.codes.IReference;
 import com.foodbird.generate.java.codes.metas.Charactor;
 import com.foodbird.generate.java.codes.metas.Operators;
 import com.foodbird.generate.java.codes.metas.This;
 import com.foodbird.generate.java.codes.type.Parameter;
-import com.foodbird.generate.java.common.Section;
 import com.foodbird.generate.java.common.Body;
+import com.foodbird.generate.java.common.Section;
 import com.foodbird.generate.java.common.Sentence;
 import com.foodbird.generate.java.common.Word;
 import com.foodbird.generate.java.constants.Constants;
@@ -15,14 +19,10 @@ import com.foodbird.generate.java.enums.MetaType;
 import com.foodbird.generate.java.enums.MethodType;
 import com.foodbird.generate.java.enums.Modifier;
 import com.google.common.collect.Lists;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * Created by yuyang on 2016/11/27.
  */
-@Component("setter")
 public class Setter extends Method implements Constants {
 
     private IAttribute attribute;

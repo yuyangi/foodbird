@@ -1,7 +1,5 @@
 package com.foodbird.generate.java.tools;
 
-import com.sun.tools.javac.util.Assert;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -12,7 +10,6 @@ import java.util.function.Function;
 public class CollectionUtils {
 
     public static <F,T> List<T> convert(List<F> list, Function<F, T> function) {
-        Assert.checkNull(list);
         List<T> newList = new ArrayList<>(list.size());
         list.forEach(f -> newList.add(function.apply(f)));
         return newList;

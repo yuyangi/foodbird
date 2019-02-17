@@ -1,21 +1,22 @@
 package com.foodbird.generate.java.codes.method;
 
-import com.foodbird.generate.java.codes.*;
+import com.foodbird.generate.java.codes.IAttribute;
+import com.foodbird.generate.java.codes.ICodeModel;
+import com.foodbird.generate.java.codes.IParameter;
+import com.foodbird.generate.java.codes.IType;
 import com.foodbird.generate.java.codes.metas.Definitions;
-import com.foodbird.generate.java.common.Section;
 import com.foodbird.generate.java.common.Body;
+import com.foodbird.generate.java.common.Section;
 import com.foodbird.generate.java.common.Sentence;
 import com.foodbird.generate.java.common.Word;
 import com.foodbird.generate.java.constants.Constants;
 import com.foodbird.generate.java.enums.MetaType;
 import com.foodbird.generate.java.enums.MethodType;
 import com.foodbird.generate.java.enums.Modifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Created by yuyang on 2016/11/27.
  */
-@Component("getter")
 public class Getter extends Method implements Constants {
 
     private IAttribute attribute;

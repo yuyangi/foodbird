@@ -52,7 +52,8 @@ public class ClassController {
         t.setName(teachName);
         ClassParam param = new ClassParam(stu, cls, t);
         try {
-            return createClass.process(param);
+            Object process = createClass.process(param);
+            return process;
         } catch (Throwable throwable) {
             return throwable;
         }
